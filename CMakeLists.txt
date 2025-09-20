@@ -42,6 +42,8 @@ target_sources(crime-analysis PRIVATE ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+target_link_libraries(crime-analysis -lcurl -ljsoncpp)
+
 if(BUILD_TESTS)
     include(CTest)
     enable_testing()
