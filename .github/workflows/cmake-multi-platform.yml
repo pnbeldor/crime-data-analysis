@@ -55,6 +55,14 @@ jobs:
         curl -sSL "${CMAKE_URL}" | tar -xz -C "${RUNNER_TEMP}/cmake" --strip-components=1
         echo "${RUNNER_TEMP}/cmake/bin" >> $GITHUB_PATH
 
+    - name: Build JsonCpp (example with CMake)
+      run: |
+        mkdir jsoncpp-build
+        cd jsoncpp-build
+        cmake ../jsoncpp-repo-path # Adjust path to your JsonCpp source
+        make
+        sudo make install # Or install to a local path
+          
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
       id: strings
