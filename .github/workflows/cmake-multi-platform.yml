@@ -24,16 +24,22 @@ jobs:
             cpp_compiler: g++
             cmake_generator: Ninja
             cmake_flags: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+            c_flags: -Wall -Wextra -Wpedantic
+            cxx_flags: -Wall -Wextra -Wpedantic -std=c++20
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
             cmake_generator: "Ninja"
+            c_flags: /W4
+            cxx_flags: /W4 /std:c++20
             cmake_flags: "-DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl"
           - os: macos-latest
             c_compiler: clang
             cpp_compiler: clang++
             cmake_generator: Ninja
             cmake_flags: "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+            c_flags: -Wall -Wextra -Wpedantic
+            cxx_flags: -Wall -Wextra -Wpedantic -std=c++20
 
   
     steps:
@@ -48,7 +54,7 @@ jobs:
     - name: Set up CMake
       uses: jwlawson/actions-setup-cmake@v1.14 # Use a specific version for stability
       with:
-        version: 4.1.1
+        cmake-version: 4.1.1
 
 #    - name: Download and Install CMake 4.1.0
 #      run: |
@@ -73,6 +79,8 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DCMAKE_C_FLAGS="${{ matrix.c_flags }}"
+        -DCMAKE_CXX_FLAGS="${{ matrix.cxx_flags }}
         -S ${{ github.workspace }}
         -G ${{matrix.cmake_generator}}
 
