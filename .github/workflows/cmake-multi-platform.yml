@@ -56,7 +56,21 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.14 # Use a specific version for stability
       with:
         cmake-version: 4.1.1
-          
+
+    - name: Clone jsoncpp
+      run: git clone https://github.com/open-source-parsers/jsoncpp.git
+
+    - name: Build jsoncpp
+      working-directory: jsoncpp
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+    - name: Install jsoncpp
+      working-directory: jsoncpp/build
+      run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp_install
+  
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
       id: strings
