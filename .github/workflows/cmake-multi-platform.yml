@@ -73,8 +73,7 @@ jobs:
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -DCMAKE_C_FLAGS=${{ matrix.c_flags }}
         -DCMAKE_CXX_FLAGS=${{ matrix.cxx_flags }}
-        -DJSONCPP_INCLUDE_DIR=${{ github.workspace }}/jsoncpp_install/include
-        -DJSONCPP_LIBRARY=${{ github.workspace }}/jsoncpp_install/lib/libjsoncpp.a
+        -I /usr/include/jsoncpp
         -S ${{ github.workspace }}
         -G ${{matrix.cmake_generator}}
 
