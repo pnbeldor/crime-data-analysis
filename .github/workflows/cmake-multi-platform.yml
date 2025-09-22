@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         #os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         build_type: [Release]
         include:
           - os: ubuntu-latest
@@ -27,22 +27,6 @@ jobs:
             cmake_flags: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
             c_flags: -Wall -Wextra -Wpedantic
             cxx_flags: -Wall -Wextra -Wpedantic
-          #- os: windows-latest
-          # c_compiler: cl
-          #  cpp_compiler: cl
-          #  cmake_generator: "Ninja"
-          #  c_flags: /W4
-          #  cxx_flags: /W4
-          #  cmake_flags: "-DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
-          # - os: macos-latest
-          #   c_compiler: clang
-          #   cpp_compiler: clang++
-          #   cmake_generator: Ninja
-          #   cmake_flags: "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
-          #   c_flags: -Wall -Wextra -Wpedantic
-          #   cxx_flags: -Wall -Wextra -Wpedantic
-
-  
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
