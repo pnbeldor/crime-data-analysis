@@ -54,12 +54,14 @@ jobs:
 
     - name: Install jsoncpp
       working-directory: jsoncpp/build
-      run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp_install
+      run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp
 
     - name: Add custom directory to PATH
       shell: bash
       run: |
-        echo "/usr/include" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/include/" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/include/jsoncpp" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/lib/" >> $GITHUB_PATH
   
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
