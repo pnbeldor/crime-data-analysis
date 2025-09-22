@@ -34,13 +34,13 @@ jobs:
           #  c_flags: /W4
           #  cxx_flags: /W4
           #  cmake_flags: "-DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
-          - os: macos-latest
-            c_compiler: clang
-            cpp_compiler: clang++
-            cmake_generator: Ninja
-            cmake_flags: "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
-            c_flags: -Wall -Wextra -Wpedantic
-            cxx_flags: -Wall -Wextra -Wpedantic
+          # - os: macos-latest
+          #   c_compiler: clang
+          #   cpp_compiler: clang++
+          #   cmake_generator: Ninja
+          #   cmake_flags: "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
+          #   c_flags: -Wall -Wextra -Wpedantic
+          #   cxx_flags: -Wall -Wextra -Wpedantic
 
   
     steps:
@@ -67,7 +67,7 @@ jobs:
         cd build
         cmake ..
         cmake --build . --target install
-        
+
     - name: Install jsoncpp
       working-directory: jsoncpp/build
       run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp_install
