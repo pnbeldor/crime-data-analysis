@@ -38,7 +38,7 @@ jobs:
   
     steps:
     - name: Checkout code
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: Setup CMake and Ninja
       uses: ashutoshvarma/setup-ninja@master # This action also installs CMake
