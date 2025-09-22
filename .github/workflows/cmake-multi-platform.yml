@@ -54,14 +54,14 @@ jobs:
 
     - name: Install jsoncpp
       working-directory: jsoncpp/build
-      run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp
+      run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp_install/
 
     - name: Add custom directory to PATH
       shell: bash
       run: |
-        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/include/" >> $GITHUB_PATH
-        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/include/jsoncpp" >> $GITHUB_PATH
-        echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/lib/" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp_install/usr/local/include/" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp_install/usr/local/lib" >> $GITHUB_PATH
+        echo "${GITHUB_WORKSPACE}/jsoncpp_install/usr/local/lib/" >> $GITHUB_PATH
   
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
@@ -80,6 +80,7 @@ jobs:
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
         -DCMAKE_C_FLAGS=${{ matrix.c_flags }}
         -DCMAKE_CXX_FLAGS=${{ matrix.cxx_flags }}
+        -DCMAKE_PREFIX_PATH="${GITHUB_WORKSPACE}/jsoncpp_install/usr/local/lib
         -S ${{ github.workspace }}
         -G ${{matrix.cmake_generator}}
 
