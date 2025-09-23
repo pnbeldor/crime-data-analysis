@@ -12,3 +12,5 @@ ADD_TEST(NAME crimeDataTest COMMAND CrimeIncidentsTest)
 include(GoogleTest)
 
 gtest_discover_tests(CrimeIncidentsTest)
+
+endif()

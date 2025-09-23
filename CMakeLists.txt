@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.1.0)
-project(crime-analysis VERSION 0.1.0 LANGUAGES C CXX)
+project(openDataAnalysis VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -34,22 +34,20 @@ if(NOT WIN32)
     endif()
 endif()
 
+add_executable(${PROJECT_NAME} main.cpp)
 
-add_library(crime-analysis)
+#target_include_directories(${PROJECT_NAME} PUBLIC /usr/include/jsoncpp)
+#target_link_libraries(${PROJECT_NAME} -lcurl -ljsoncpp)
 
-file(GLOB SOURCES CONFIG_DEPENDS "src/*.cpp")
-target_sources(crime-analysis PRIVATE ${SOURCES})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_include_directories(${PROJECT_NAME} PUBLIC /usr/include/jsoncpp)
-target_link_libraries(crime-analysis -lcurl -ljsoncpp)
+add_subdirectory(CrimeIncidents)
+target_link_libraries(${PROJECT_NAME} PUBLIC crimeAnalysis)
+add_subdirectory(DataCenter)
+target_link_libraries(${PROJECT_NAME} PUBLIC data)
 
 if(BUILD_TESTS)
     include(CTest)
     enable_testing()
-
-    #find_package(GTests 1.17.0 REQUIRED NO_MODULE)
-    add_subdirectory(test)
 endif()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
