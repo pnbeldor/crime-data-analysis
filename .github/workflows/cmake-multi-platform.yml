@@ -43,14 +43,14 @@ jobs:
             cmake_flags: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
             c_flags: -Wall -Wextra -Wpedantic
             cxx_flags: -Wall -Wextra -Wpedantic
-          - os: macos-latest
-            compiler: clang
-            c_compiler: clang
-            cpp_compiler: clang++
-            cmake_generator: Ninja
-            cmake_flags: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
-            c_flags: -Wall -Wextra -Wpedantic
-            cxx_flags: -Wall -Wextra -Wpedantic
+          # - os: macos-latest
+          #   compiler: clang
+          #   c_compiler: clang
+          #   cpp_compiler: clang++
+          #   cmake_generator: Ninja
+          #   cmake_flags: "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON"
+          #   c_flags: -Wall -Wextra -Wpedantic
+          #   cxx_flags: -Wall -Wextra -Wpedantic
 
         exclude:
           - os: macos-latest
@@ -116,39 +116,14 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.14 # Use a specific version for stability
       with:
         cmake-version: 4.1.1
-
-    # - name: Clone jsoncpp
-    #   run: git clone https://github.com/open-source-parsers/jsoncpp.git
-
-    # - name: Build jsoncpp
-    #   working-directory: jsoncpp
-    #   run: |
-    #     mkdir build
-    #     cd build
-    #     cmake ..
-    #     cmake --build . 
-
-    # - name: Install jsoncpp
-    #   working-directory: jsoncpp/build
-    #   run: make install DESTDIR=${GITHUB_WORKSPACE}/jsoncpp
-
-    # - name: Add custom directory to PATH
-    #   shell: bash
-    #   run: |
-    #     echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/include/" >> $GITHUB_PATH
-    #     echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/lib" >> $GITHUB_PATH
-    #     echo "${GITHUB_WORKSPACE}/jsoncpp/usr/local/lib/" >> $GITHUB_PATH
   
     - name: Set reusable strings
-      # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
       id: strings
       shell: bash
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
@@ -163,13 +138,10 @@ jobs:
         -G ${{matrix.cmake_generator}}
 
     - name: Build
-      # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       run: |
         cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ env.BUILD_TYPE }} --parallel 4
 
     - name: Run Tests
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
-      # Execute tests defined by the CMake configuration. Note that --build-config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: |
         ctest --build-config ${{ matrix.build_type }} --output-on-failure --parallel 4

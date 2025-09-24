@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(BUILD_TESTS "Whether to build unit tests" ON)
+option(BUILD_TESTING "Whether to build unit tests" ON)
+
+include(CTest)
+enable_testing()
 
 #include(GnuInstallDirs)
 

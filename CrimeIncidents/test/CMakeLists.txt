@@ -9,7 +9,7 @@ if(BUILD_TESTING)
 
     target_include_directories(CrimeIncidentsTest PUBLIC "${PROJECT_BINARY_DIR}")
 
-    add_test(NAME crimeDataTest COMMAND CrimeIncidentsTest)
+    #add_test(NAME crimeDataTest COMMAND CrimeIncidentsTest)
     include(GoogleTest)
 
     gtest_discover_tests(CrimeIncidentsTest
