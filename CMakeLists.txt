@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 4.1.0)
 project(openDataAnalysis VERSION 0.1.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -23,7 +23,7 @@ FetchContent_MakeAvailable(googletest)
 if(MSVC)
     add_compile_options(/W4 /WX)
 else()
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
+    add_compile_options(-Wall -Wextra -pedantic -Werror -O3)
 endif()
 
 if(NOT WIN32)
@@ -36,19 +36,17 @@ endif()
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-#target_include_directories(${PROJECT_NAME} PUBLIC /usr/include/jsoncpp)
-#target_link_libraries(${PROJECT_NAME} -lcurl -ljsoncpp)
-
-
 add_subdirectory(CrimeIncidents)
 target_link_libraries(${PROJECT_NAME} PUBLIC crimeAnalysis)
 add_subdirectory(DataCenter)
 target_link_libraries(${PROJECT_NAME} PUBLIC data)
 
-if(BUILD_TESTS)
-    include(CTest)
-    enable_testing()
-endif()
+target_link_libraries(${PROJECT_NAME} PUBLIC gtest)
+
+set(CMAKE_BUILD_TYPE, "Debug")
+target_compile_options(${PROJECT_NAME} PRIVATE -coverage)
+target_link_options(${PROJECT_NAME} PRIVATE -coverage)
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
