@@ -12,5 +12,7 @@ if(BUILD_TESTING)
     add_test(NAME crimeDataTest COMMAND CrimeIncidentsTest)
     include(GoogleTest)
 
-    gtest_discover_tests(CrimeIncidentsTest)
+    gtest_discover_tests(CrimeIncidentsTest
+        EXTRA_ARGS --gtest_output=xml:${CMAKE_BINARY_DIR}/test_results/crimeIncidents/)
+
 endif()

@@ -7,4 +7,6 @@ target_sources(data PRIVATE ${SOURCES})
 target_include_directories(data PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(data -lcurl -ljsoncpp)
 
-add_subdirectory(test)
+if(BUILD_TESTS)
+    add_subdirectory(test)
+endif()
