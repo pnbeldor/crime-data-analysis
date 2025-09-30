@@ -27,12 +27,12 @@ struct DataProperties
     std::string anc;
     std::string district;
     std::string psa;
-    std::string neighboHood_cluster;
+    std::string neighborHood_cluster;
     std::string block_group;
     std::string census_tract;
-    std::string voting_precint;
+    std::string voting_precinct;
     double latitude;
-    double longitute;
+    double longitude;
     std::string bid;
     std::string start_date;
     std::string end_date;
@@ -64,6 +64,7 @@ public:
     void print() const;
     std::vector<DataFeature> setDataFeature(const Json::Value& data);
     DataCollection setDataCollection(const Json::Value& data);
+    DataCollection setDataCollection(const std::string& data_str);
     DataProperties setDataProperties(const Json::Value& data);
 
 private:

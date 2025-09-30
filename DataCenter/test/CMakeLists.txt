@@ -11,7 +11,7 @@ if(BUILD_TESTING)
 
     target_include_directories(data_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
-    #add_test(NAME data_tests COMMAND data_tests)
+    add_test(NAME Data_tests COMMAND data_tests)
     include(GoogleTest)
 
     gtest_discover_tests(data_tests

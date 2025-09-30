@@ -8,6 +8,7 @@ date: 9/17/2025
 #include "Data.h"
 
 #include <cmath>
+#include <iostream>
 
 Data::Data() {
     // Constructor
@@ -33,12 +34,12 @@ DataProperties Data::setDataProperties(const Json::Value& data)
     properties.anc = data.get("ANC", "").asString();
     properties.district = data.get("DISTRICT", "").asString();
     properties.psa = data.get("PSA", "").asString();
-    properties.neighboHood_cluster = data.get("NEIGHBORHOOD_CLUSTER", "").asString();
+    properties.neighborHood_cluster = data.get("NEIGHBORHOOD_CLUSTER", "").asString();
     properties.block_group = data.get("BLOCK_GROUP", "").asString();
     properties.census_tract = data.get("CENSUS_TRACT", "").asString();
-    properties.voting_precint = data.get("VOTING_PRECINCT", "").asString();
+    properties.voting_precinct = data.get("VOTING_PRECINCT", "").asString();
     properties.latitude = data.get("LATITUDE", NAN).asDouble();
-    properties.longitute = data.get("LONGITUDE", NAN).asDouble();
+    properties.longitude = data.get("LONGITUDE", NAN).asDouble();
     properties.start_date = data.get("START_DATE", "").asString();
     properties.end_date = data.get("END_DATE", "").asString();
     properties.object_id = data.get("OBJECT_ID", NAN).asDouble();
@@ -64,24 +65,58 @@ std::vector<DataFeature> Data::setDataFeature(const Json::Value& data_feature)
     return feature_coll;
 }
 
+
 DataCollection Data::setDataCollection(const Json::Value& data)
 {
     DataCollection collection;
     collection.type = data.get("type", "").asString();
     collection.name = data.get("name", "").asString();
-
+    
     if (data.isMember("crs"))
     {
         collection.crs_type = data["crs"].get("type", "").asString();
-
         if (data["crs"].isMember("properties"))
         {
             collection.crs_property_name = data["crs"]["properties"].get("name", "").asString();
         }
     }
-
     if (data.isMember("features")) {
         collection.features = std::make_unique<std::vector<DataFeature>>(setDataFeature(data["features"]));
+    }
+
+    return collection;
+}
+
+
+DataCollection Data::setDataCollection(const std::string& data_str)
+{
+    DataCollection collection;
+    Json::Value data;
+    Json::Reader jsonReader;
+
+    if (!jsonReader.parse(data_str, data))
+    {
+        std::cout << "Error passing dat string to json!\n";
+        std::cout << "Data was: " << data_str << "\n\n";
+    }
+    else
+    {
+        collection.type = data.get("type", "").asString();
+        collection.name = data.get("name", "").asString();
+
+        if (data.isMember("crs"))
+        {
+            collection.crs_type = data["crs"].get("type", "").asString();
+
+            if (data["crs"].isMember("properties"))
+            {
+                collection.crs_property_name = data["crs"]["properties"].get("name", "").asString();
+            }
+        }
+
+        if (data.isMember("features")) {
+            collection.features = std::make_unique<std::vector<DataFeature>>(setDataFeature(data["features"]));
+        }
     }
 
     return collection;
