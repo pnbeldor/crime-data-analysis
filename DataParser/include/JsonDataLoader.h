@@ -12,23 +12,22 @@ Date: 9/24/2025
 
 #include <jsoncpp/json/json.h>
 
+#include "Data.h"
+
 class JsonDataLoader : public AbstractDataFetcher {
 public:
     JsonDataLoader();
-    JsonDataLoader(DataSource& source, std::string& location);
-    //void LoadData(DataSource& source, std::string& location, std::string& dataValue) override;
-    std::string LoadData() override;
+    JsonDataLoader(const DataSource& source, const std::string& location);
     bool ValidateData(const std::string& data_str) override;
+    DataProperties setDataProperties(const Json::Value& data);
+    std::vector<DataFeature> setDataFeature(const Json::Value& data_feature);
+    void SetDataCollection(const std::string& dataStr) override;
 
     virtual ~JsonDataLoader() {};
 
 private:
 
 Json::Value ParseJsonData(const std::string& data_str);
-
-private:
-    DataSource source;
-    std::string location;
 
 };
 

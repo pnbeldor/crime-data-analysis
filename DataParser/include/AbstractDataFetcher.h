@@ -10,12 +10,17 @@ Date: 9/26/2025
 
 #include <vector>
 
+#include "Data.h"
 #include "DataLoaderInterface.h"
 
 class AbstractDataFetcher : public DataLoaderInterface {
 public:
     AbstractDataFetcher();
+    AbstractDataFetcher(const DataSource& source,
+                               const std::string& location);
     virtual ~AbstractDataFetcher() {}
+
+    std::string LoadData() override;
 
     //virtual void LoadData(DataSource& source, std::string& location, std::string& dataValue) override;
     //virtual std::string LoadData() ;
@@ -24,7 +29,21 @@ public:
     std::vector<std::string> splitString(const std::string& str, char delimiter);
     std::string trim(const std::string& str);
 
+    std::unique_ptr<Data> data_;
+
+    const DataSource& GetSource()
+    {
+        return source;
+    }
+
+    const std::string& GetLocation()
+    {
+        return location;
+    }
+
 private:
+    DataSource source;
+    std::string location;
 
 };
 

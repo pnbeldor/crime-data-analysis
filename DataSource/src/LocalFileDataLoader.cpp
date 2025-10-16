@@ -7,16 +7,28 @@
 #include <iostream>
 #include <sstream>
 
-LocalFileDataLoader::LocalFileDataLoader()
+LocalFileDataLoader::LocalFileDataLoader(const std::string& filePath)
 {
+    inputFile.open(filePath);
 
+    if (!inputFile.is_open()) { // Check if the file opened successfully
+        std::cerr << "Error: Could not open file " << filePath << std::endl;
+    }
+}
+
+LocalFileDataLoader::~LocalFileDataLoader()
+{
+    if (inputFile.is_open())
+    {
+        inputFile.close(); // Close the file
+    }
 }
 
 std::string LocalFileDataLoader::fetchData(const std::string& filePath)
 {
     //file_stream.open(file_path, std::ios::binary);
 
-    std::ifstream inputFile(filePath); // Open the file
+    //std::ifstream inputFile(filePath); // Open the file
     std::string fileContent;
 
     if (inputFile.is_open()) { // Check if the file opened successfully

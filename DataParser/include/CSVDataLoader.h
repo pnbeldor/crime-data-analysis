@@ -9,6 +9,8 @@ date: 9/24/2025
 #define CSV_DATA_LOADER_H
 
 #include "AbstractDataFetcher.h"
+#include <string>
+#include <vector>
 
 class CSVDataLoader : public AbstractDataFetcher
 {
@@ -19,7 +21,8 @@ public:
 
     std::string LoadData() override;
     bool ValidateData(const std::string& data_str) override;
-    std::string ParseCSVData(const std::string& data_str);
+    std::vector<std::vector<std::string>> ParseCSVData(const std::string& data_str);
+    void SetDataCollection(const std::string& dataStr) override;
 
 private:
     DataSource source;

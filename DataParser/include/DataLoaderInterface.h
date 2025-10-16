@@ -39,7 +39,7 @@ public:
     //virtual void LoadData(DataSource& source, std::string& location, std::string& dataValue) = 0;
     virtual std::string LoadData() = 0;
     virtual bool ValidateData(const std::string& data_str) = 0;
-
+    virtual void SetDataCollection(const std::string& dataStr) = 0;
 private:
 
 };

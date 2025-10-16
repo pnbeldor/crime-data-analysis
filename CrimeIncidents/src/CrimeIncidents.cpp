@@ -37,8 +37,8 @@
 
 void  CrimeIncidents::SetCollection()
 {
-    Data collectionData;
-    collection = std::make_unique<DataCollection>(collectionData.setDataCollection(data));
+    //Data collectionData;
+    //collection = std::make_unique<DataCollection>(collectionData.setDataCollection(data));
 }
 
 

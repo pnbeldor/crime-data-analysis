@@ -7,12 +7,24 @@ date: 9/26/2025
 
 #include "AbstractDataFetcher.h"
 
+#include <iostream>
 #include <sstream>
 
+#include "LocalFileDataLoader.h"
+#include "URLDataLoader.h"
+#include "Data.h"
 
 AbstractDataFetcher::AbstractDataFetcher()
 {
-    
+    data_ = std::make_unique<Data>();
+}
+
+
+AbstractDataFetcher::AbstractDataFetcher(const DataSource& source,
+                               const std::string& location):
+                source(source), location(location)
+{
+    data_ = std::make_unique<Data>();
 }
 
 std::string AbstractDataFetcher::formatToString(DataFormat format)
@@ -57,4 +69,23 @@ std::string AbstractDataFetcher::trim(const std::string& str)
     
     if (start == std::string::npos) return "";
     return str.substr(start, end - start + 1);
+}
+
+std::string AbstractDataFetcher::LoadData()
+{
+    IDataFetcher* loader;
+    if (source == DataSource::LOCAL_FILE)
+    {
+        loader = new LocalFileDataLoader(location);
+        return loader->fetchData(location);
+    }
+    else if (source == DataSource::HTTP_REQUEST)
+    {
+        loader = new URLDataLoader();
+        return loader->fetchData(location);
+    }
+
+    std::cout << "Cannot load data from Json\n\n";
+
+    return "";
 }

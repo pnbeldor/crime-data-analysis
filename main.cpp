@@ -27,38 +27,36 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     config.location = "/home/pnbeldor/Downloads/Crime_Incidents_in_the_Last_30_Days.geojson";
 
-    CrimeDataAnalyzer crime_data(config);
-    crime_data.LoadAllData();
-    DataCollection* collection = crime_data.getCollection();
+    CrimeDataAnalyzer crimeDataAnalyzer(config);
+    crimeDataAnalyzer.LoadAllData();
 
-    std::cout << "Type = " << collection->type <<"\n";
-    std::cout << "Name = " << collection->name << "\n";
-    std::cout << "crs type = " << collection->crs_type <<"\n";
-    std::cout << "CRS Properties Name = " << collection->crs_property_name << "\n";
+    Data& data = crimeDataAnalyzer.GetCrimeDataPtr();
+
+    std::cout << "Type = " << data.collection_ptr->type <<"\n";
+    std::cout << "Name = " << data.collection_ptr->name << "\n";
+    std::cout << "crs type = " << data.collection_ptr->crs_type <<"\n";
+    std::cout << "CRS Properties Name = " << data.collection_ptr->crs_property_name << "\n";
 
     std::cout << "\nThe first 50 crime data\n\n";
-    for (auto i = 0; i < 50; i++) {
-        std::cout << "Report Date: " << (*collection->features)[i].properties.report_date << "\n";
-        std::cout << "Offense: " << (*collection->features)[i].properties.offense << "\n";
-
-        std::cout << "Method: " << (*collection->features)[i].properties.method << "\n";
-        std::cout << "Neighborhood Cluster: " << (*collection->features)[i].properties.neighborHood_cluster << "\n";
-        std::cout << "ANC: " << (*collection->features)[i].properties.anc << "\n";
-        std::cout << "PSA: " << (*collection->features)[i].properties.psa << "\n";    
+    for (auto i = 0; i < 5; i++) {
+        data.printFeature((*(data.collection_ptr)->features)[i]);
     }
 
-    DataLoaderFactory factory;
-    [[maybe_unused]] std::unique_ptr data = factory.CreateDataLoader(config);
-    data->LoadData();
+    std::cout << " =================== Crime By Type ==================\n\n";
+    crimeDataAnalyzer.GetCrimesByType();
 
+    std::cout << " ================= Crime by Neighborhood cluster ====================\n\n";
+    crimeDataAnalyzer.GetCrimesByNeighborhoodCluster();
 
-    config.source = DataSource::HTTP_REQUEST;
-    config.format = DataFormat::CSV;
+    std::cout << " =============== Crime by District ======================\n\n";
+    crimeDataAnalyzer.GetCrimesByDistrict();
 
-    [[maybe_unused]] std::unique_ptr data2 = factory.CreateDataLoader(config);
-    data2->LoadData();
-    
-    std::cout << "Data analysis project\n\n";
+    std::cout << " =============== Crime by voting precinct ======================\n\n";
+    crimeDataAnalyzer.GetCrimesByVotingPrecinct();
+
+    std::cout << " =============== Crime within a radius ======================\n\n";
+
+    crimeDataAnalyzer.FindCrimesInRadius(38.8439, -76.9780, 5);
 
     return 0;
 }

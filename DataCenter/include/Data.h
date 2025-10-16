@@ -42,10 +42,40 @@ struct DataProperties
     // if geometry type is point: lat and long
 };
 
-struct DataFeature{
+struct DataFeature {
     std::string type;
-    //std::unique_ptr<DataProperties> properties_ptr;
-    DataProperties properties;
+    std::unique_ptr<DataProperties> properties_ptr;
+
+    DataFeature() : type(""), properties_ptr(nullptr)
+    {
+
+        properties_ptr = std::make_unique<DataProperties>();
+    }
+
+    ~DataFeature(){}
+
+    DataFeature(const DataFeature& other)
+    {
+        this->type = other.type;
+        this->properties_ptr = std::make_unique<DataProperties>(*other.properties_ptr);
+    }
+    
+    DataFeature(DataFeature&& other) noexcept :type(other.type),
+    properties_ptr(std::move(other.properties_ptr))
+    {
+        //*this = std::move(other);
+    }
+
+    DataFeature& operator=(DataFeature&& other) noexcept
+    {
+        if (this != &other)
+        {
+            type = other.type;
+            properties_ptr = std::make_unique<DataProperties>(*other.properties_ptr);
+        }
+
+        return *this;
+    }
 };
 
 struct DataCollection
@@ -55,20 +85,42 @@ struct DataCollection
     std::string crs_type;
     std::string crs_property_name;
     std::unique_ptr<std::vector<DataFeature>> features;
+
+    explicit DataCollection()
+    :type(""), name(""), crs_type(""), crs_property_name(""), features(nullptr)
+    {
+        features = std::make_unique<std::vector<DataFeature>>();
+    }
+
+    ~DataCollection() = default;
+
+    DataCollection(const DataCollection& other) = default;
+    DataCollection& operator=(DataCollection& other) = default;
+    DataCollection(DataCollection&& other) = default;
+    DataCollection& operator=(DataCollection&& other) = default;
+
 };
 
 class Data {
 public:
     Data();
-    ~Data();
-    void print() const;
-    std::vector<DataFeature> setDataFeature(const Json::Value& data);
-    DataCollection setDataCollection(const Json::Value& data);
-    DataCollection setDataCollection(const std::string& data_str);
-    DataProperties setDataProperties(const Json::Value& data);
+    virtual ~Data();
 
-private:
-    std::unique_ptr<Json::Value> data;
+    void printCollection() const;
+    void printFeature(const DataFeature& record) const;
+    const std::vector<DataFeature> setDataFeature(const Json::Value& data);
+    const DataCollection setDataCollection(const Json::Value& data);
+    void SetDataCollection(const std::string& data_str);
+    const DataProperties setDataProperties(const Json::Value& data) const;
+    const DataProperties setDataProperties(const std::string& data) const;
+
+    DataCollection& GetCollectionPtr()
+    {
+        return *collection_ptr;
+    }
+
+//private:
+    std::unique_ptr<DataCollection> collection_ptr;
 
 };
 

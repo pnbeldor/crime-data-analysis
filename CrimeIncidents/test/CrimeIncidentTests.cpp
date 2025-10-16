@@ -61,7 +61,7 @@ TEST_F(CrimeIncidentsTestFixture, SetCollectionTests)
     EXPECT_STREQ(crimeData->collection->type.c_str(), "FeatureCollection");
     EXPECT_STREQ(crimeData->collection->name.c_str(), "Crime_Incidents_in_the_Last_30_Days");
     EXPECT_STREQ(crimeData->collection->crs_property_name.c_str(), "urn:ogc:def:crs:OGC:1.3:CRS84");
-    EXPECT_STREQ((*crimeData->collection->features)[0].properties.report_date.c_str(), "2025-08-11T14:31:32Z");
-    EXPECT_STREQ((*crimeData->collection->features)[0].properties.ccn.c_str(), "25423276");
-    EXPECT_STREQ((*crimeData->collection->features)[0].properties.offense.c_str(), "THEFT/OTHER");
+    EXPECT_STREQ((*crimeData->collection->features)[0].properties_ptr->report_date.c_str(), "2025-08-11T14:31:32Z");
+    EXPECT_STREQ((*crimeData->collection->features)[0].properties_ptr->ccn.c_str(), "25423276");
+    EXPECT_STREQ((*crimeData->collection->features)[0].properties_ptr->offense.c_str(), "THEFT/OTHER");
 }
