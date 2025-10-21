@@ -1,11 +1,9 @@
 #ifndef CRIME_DATA_ANALYZER_HPP
 #define CRIME_DATA_ANALYZER_HPP
 
-#include <vector>
-#include <cmath>
 #include <algorithm>
-#include <iomanip>
-#include <iostream>
+#include <cmath>
+#include <vector>
 
 #include "Data.h"
 #include "DataLoaderInterface.h"
@@ -17,8 +15,6 @@ public:
     CrimeDataAnalyzer(const DataConfig& config);
     ~CrimeDataAnalyzer();
 
-    bool LoadAllData();
-
     std::map<std::string, int> GetCrimesByType() const;
     std::map<std::string, int> GetCrimesByNeighborhoodCluster() const;
     std::map<std::string, int> GetCrimesByVotingPrecinct() const;
@@ -26,10 +22,7 @@ public:
     double CalculateClearanceRate() const;
     std::vector<DataFeature> FindCrimesInRadius(double center_lat, double center_lon, double radius_km) const;
  
-    const DataCollection* GetCollection() const
-    {
-        return &collection_;
-    }
+    void PrintCollection() const;
 
     Data& GetCrimeDataPtr()
     {
@@ -37,14 +30,14 @@ public:
     }
 
 private:
-    double CalculateDistance(double lat1, double lon1, double lat2, double lon2) const;
+    bool LoadAllData();
+    double CalculateDistance(const double lat1, const double lon1, const double lat2, const double lon2) const;
 
     void ParseDateTime(const std::string& date);
 
 private:
     std::unique_ptr<DataCollection> crime_data_;
     DataConfig config_;
-    DataCollection collection_;
     std::unique_ptr<Data> crimeDataPtr_;
 };
 

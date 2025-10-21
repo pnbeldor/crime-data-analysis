@@ -9,9 +9,12 @@ Date: 9/17/2025
 #define DATA_H
 
 #include <memory>
-#include <string>
+#include <unordered_map>
 #include <vector>
+
 #include <jsoncpp/json/json.h>
+
+#include "DataConfig.h"
 
 struct DataProperties
 {
@@ -48,7 +51,6 @@ struct DataFeature {
 
     DataFeature() : type(""), properties_ptr(nullptr)
     {
-
         properties_ptr = std::make_unique<DataProperties>();
     }
 
@@ -110,7 +112,7 @@ public:
     void printFeature(const DataFeature& record) const;
     const std::vector<DataFeature> setDataFeature(const Json::Value& data);
     const DataCollection setDataCollection(const Json::Value& data);
-    void SetDataCollection(const std::string& data_str);
+    void SetDataCollection(const std::string& data_str, DataFormat format = DataFormat::JSON);
     const DataProperties setDataProperties(const Json::Value& data) const;
     const DataProperties setDataProperties(const std::string& data) const;
 
@@ -119,9 +121,23 @@ public:
         return *collection_ptr;
     }
 
-//private:
-    std::unique_ptr<DataCollection> collection_ptr;
+    DataCollection* GetDataCollection()
+    {
+        return collection_ptr.get();
+    }
 
+private:
+    Json::Value ParseJsonData(const std::string& data_str);
+    std::vector<std::vector<std::string>> ParseCSVData(const std::string& data_str);
+    std::map<std::string, std::vector<std::string>> ParseCSVData2(const std::string& data_str);
+
+    void SetCollectionWithJSONData(const std::string& data_str);
+    void SetCollectionWithCSVData(const std::string& data_str);
+    void SetCollectionWithCSVData2(const std::string& data_str);
+
+
+private:
+    std::unique_ptr<DataCollection> collection_ptr;
 };
 
 #endif // DATA_H

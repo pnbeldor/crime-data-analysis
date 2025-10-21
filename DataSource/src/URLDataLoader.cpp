@@ -9,11 +9,13 @@ date: 9/24/2025
 
 #include <iostream>
 
-URLDataLoader::URLDataLoader() {
+URLDataLoader::URLDataLoader()
+{
     // Constructor
 }
 
-URLDataLoader::~URLDataLoader() {
+URLDataLoader::~URLDataLoader()
+{
     // Destructor
 }
 

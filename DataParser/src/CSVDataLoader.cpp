@@ -1,32 +1,24 @@
 #include "CSVDataLoader.h"
 
 #include <sstream>
-
 #include <iostream>
+
+#include "DataConfig.h"
 
 CSVDataLoader::CSVDataLoader()
 {
 
 }
 
-CSVDataLoader::CSVDataLoader(DataSource& source,
-                             std::string& location):
-                             source(source), location(location)
+CSVDataLoader::CSVDataLoader(DataSource& source, const std::string& location)
+    : AbstractDataFetcher(source, location)
 {
 
-}
-
-std::string CSVDataLoader::LoadData()
-{
-    return "";    
 }
 
 bool CSVDataLoader::ValidateData([[maybe_unused]] const std::string& data_str)
 {
-    if (source == DataSource::LOCAL_FILE)
-        return true;
-
-    return false;
+    return true;
 }
 
 std::vector<std::vector<std::string>> CSVDataLoader::ParseCSVData(const std::string& data_str)
@@ -39,33 +31,30 @@ std::vector<std::vector<std::string>> CSVDataLoader::ParseCSVData(const std::str
     {
         std::vector<std::string> row;
         std::stringstream ss1(line);
-        std::string cell;
+        bool in_quotes = false;
+        std::string current_cell;
 
-        //sprlit the line byu comma delimiter
-        while (std::getline(ss1, cell, ','))
+        //separate the line by comma delimiter
+        for (char c : line)
         {
-            row.push_back(cell);
+            if (c == '"'){
+                in_quotes = !in_quotes;
+            } else if (c == ',' && !in_quotes) {
+                row.push_back(current_cell);
+                current_cell.clear();
+            } else {
+                current_cell += c;
+            }
         }
 
+        row.push_back(current_cell); // Add the last cell
         data.push_back(row);
-    }
-
-    for (auto i = 0; i < 10; i++)
-    {
-        std::vector<std::string> temp = data[i];
-
-        for(const auto& val : temp)
-        {
-            std::cout << val << "  ";
-        }
-
-        std::cout << "\n";
     }
 
     return data;
 }
 
-void CSVDataLoader::SetDataCollection([[maybe_unused]]const std::string& dataStr)
+void CSVDataLoader::SetDataCollection(const std::string& dataStr)
 {
-
+    this->getDataPtr()->SetDataCollection(dataStr, DataFormat::CSV);
 }

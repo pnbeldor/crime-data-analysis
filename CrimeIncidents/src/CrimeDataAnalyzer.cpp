@@ -3,17 +3,13 @@
 
 #include <iostream>
 
-#include "Data.h"
-#include "AbstractDataFetcher.h"
 #include "DataLoaderFactory.h"
-#include "JsonDataLoader.h"
 
-CrimeDataAnalyzer::CrimeDataAnalyzer(const DataConfig& config) :
-                                     config_(config)
+CrimeDataAnalyzer::CrimeDataAnalyzer(const DataConfig& config)
+                                     : config_(config)
 {
     crimeDataPtr_ = std::make_unique<Data>();
     [[maybe_unused]] bool isValidData = LoadAllData();
-
 }
 
 CrimeDataAnalyzer::~CrimeDataAnalyzer()
@@ -26,14 +22,12 @@ bool CrimeDataAnalyzer::LoadAllData()
     bool isValid = false;
 
     auto dataLoader  = factory.CreateDataLoader(this->config_);
-
     std::string data_str = dataLoader->LoadData();
     
     if (dataLoader->ValidateData(data_str))
     {
         isValid = true;
-
-        crimeDataPtr_->SetDataCollection(data_str);
+        crimeDataPtr_->SetDataCollection(data_str, this->config_.format);
     }
 
     return isValid;
@@ -48,11 +42,6 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByType() const
     for (const auto& record : (*collection.features))
     {
         result[record.properties_ptr->offense]++;
-    }
-    
-    for (const auto& value : result)
-    {
-        std::cout << value.first << ": " << value.second << "\n";
     }
 
     return result;
@@ -71,10 +60,6 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByNeighborhoodCluster() c
         }
     }
 
-    for (const auto& value : result)
-    {
-        std::cout << value.first << ": " << value.second << "\n";
-    }
     return result;
 }
 
@@ -91,11 +76,6 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByVotingPrecinct() const
         }
     }
 
-    for (const auto& value : result)
-    {
-        std::cout << value.first << ": " << value.second << "\n";
-    }
-
     return result;
 }
 
@@ -104,21 +84,18 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByDistrict() const
     std::map<std::string, int> result;
     const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
 
-    for (const auto& record : (*collection.features)) {
-        if (!record.properties_ptr->district.empty()) {
+    for (const auto& record : (*collection.features))
+    {
+        if (!record.properties_ptr->district.empty())
+        {
             result[record.properties_ptr->district]++;
         }
-    }
-
-    for (const auto& value : result)
-    {
-        std::cout << value.first << ": " << value.second << "\n";
     }
 
     return result;
 }
 
-std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double center_lat, double center_lon, double radius_km) const 
+std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double center_lat, double center_lon, const  double radius_km) const
 {
     std::vector<DataFeature> result;
     const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
@@ -133,8 +110,6 @@ std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double center_lat
         }
     }
     
-    std::cout << "The number of crime within " << radius_km  << " kilometers is: " << result.size()  <<"\n\n";
-
     return result;
 }
 
@@ -154,3 +129,15 @@ double CrimeDataAnalyzer::CalculateDistance(double lat1, double lon1, double lat
     return 6371.0 * c; // Earth radius in km
 }
 
+void CrimeDataAnalyzer::PrintCollection() const
+{
+    std::cout << "Type = " << crimeDataPtr_->GetDataCollection()->type <<"\n";
+    std::cout << "Name = " << crimeDataPtr_->GetDataCollection()->name << "\n";
+    std::cout << "crs type = " << crimeDataPtr_->GetDataCollection()->crs_type <<"\n";
+    std::cout << "CRS Properties Name = " << crimeDataPtr_->GetDataCollection()->crs_property_name << "\n";
+
+    for (const auto& feature : (*(crimeDataPtr_->GetDataCollection())->features))
+    {
+        crimeDataPtr_->printFeature(feature);
+    }
+}

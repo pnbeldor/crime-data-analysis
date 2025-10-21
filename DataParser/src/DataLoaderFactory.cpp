@@ -2,9 +2,6 @@
 
 #include "DataLoaderFactory.h"
 
-#include <iostream>
-
-#include "DataLoaderInterface.h"
 #include "AbstractDataFetcher.h"
 #include "JsonDataLoader.h"
 #include "CSVDataLoader.h"
@@ -16,12 +13,11 @@ std::unique_ptr<DataLoaderInterface> DataLoaderFactory::CreateDataLoader(DataCon
 {
     switch (config.format)
     {
-         case DataFormat::JSON:
+        case DataFormat::JSON:
             return std::make_unique<JsonDataLoader>(config.source, config.location);
         case DataFormat::CSV:
             return std::make_unique<CSVDataLoader>(config.source, config.location);
         default:
-            std::cout << "Invalid data source\n";
             return nullptr;
     }
 }
