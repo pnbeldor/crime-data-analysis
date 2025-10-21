@@ -30,7 +30,7 @@ FetchContent_MakeAvailable(googletest)
 if(MSVC)
     add_compile_options(/W4 /WX)
 else()
-    add_compile_options(-Wall -Wextra -pedantic -Werror -fdiagnostics-all-candidates -g )
+    add_compile_options(-Wall -Wextra -pedantic -Werror -g )
 endif()
 
 if(NOT WIN32)
