@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "CrimeIncidents.h"
+#include "CrimeDataAnalyzer.h"
 
-std::string json_str = R"(
+std::string json_str2 = R"(
 {
 "type": "FeatureCollection",
 "name": "Crime_Incidents_in_the_Last_30_Days",
@@ -19,28 +19,28 @@ std::string json_str = R"(
 { "type": "Feature", "properties": { "CCN": "25423737", "REPORT_DAT": "2025-08-28T13:02:45Z", "SHIFT": "DAY", "METHOD": "OTHERS", "OFFENSE": "THEFT/OTHER", "BLOCK": "1700 - 1799 BLOCK OF 15TH STREET NW", "XBLOCK": 397003.72, "YBLOCK": 138387.86, "WARD": "2", "ANC": "2B", "DISTRICT": "3", "PSA": "301", "NEIGHBORHOOD_CLUSTER": "Cluster 6", "BLOCK_GROUP": "005202 2", "CENSUS_TRACT": "005202", "VOTING_PRECINCT": "Precinct 16", "LATITUDE": 38.913350295000001, "LONGITUDE": -77.034548160200004, "BID": null, "START_DATE": "2025-06-20T18:10:00Z", "END_DATE": "2025-06-20T18:20:00Z", "OBJECTID": 796061848, "OCTO_RECORD_ID": null }, "geometry": { "type": "Point", "coordinates": [ -77.034550455276289, 38.913358084568344 ] } }
 ]})";
 
-class CrimeIncidentsTestFixture : public ::testing::Test
+class CrimeDataAnalyzerTestFixture : public ::testing::Test
 {
 protected:
 
     void SetUp() override
     {
-        crimeData = new CrimeIncidents(file_path);
+        //crimeData = new CrimeIncidents(file_path);
         //*crimeData = Json::parse(json_str);
     }
 
     void TearDown() override
     {
-        delete crimeData;
-        crimeData = nullptr;
+        ///delete crimeData;
+        //crimeData = nullptr;
     }
 
     const std::string file_path = "/home/pnbeldor/Downloads/Crime_Incidents_in_the_Last_30_Days.geojson";
 
-    CrimeIncidents* crimeData;
+    //CrimeIncidents* crimeData;
 };
 
-TEST_F(CrimeIncidentsTestFixture, sampleTest)
+TEST_F(CrimeDataAnalyzerTestFixture, sampleTest)
 {
     // Json::Value data = crimeData->getData();
 
@@ -54,7 +54,7 @@ TEST_F(CrimeIncidentsTestFixture, sampleTest)
     EXPECT_EQ(0, 0);
 }
 
-TEST_F(CrimeIncidentsTestFixture, SetCollectionTests)
+TEST_F(CrimeDataAnalyzerTestFixture, SetCollectionTests)
 {
     // crimeData->SetCollection();
 

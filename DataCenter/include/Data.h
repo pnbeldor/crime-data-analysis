@@ -9,9 +9,12 @@ Date: 9/17/2025
 #define DATA_H
 
 #include <memory>
-#include <string>
+#include <unordered_map>
 #include <vector>
+
 #include <jsoncpp/json/json.h>
+
+#include "DataConfig.h"
 
 struct DataProperties
 {
@@ -27,12 +30,12 @@ struct DataProperties
     std::string anc;
     std::string district;
     std::string psa;
-    std::string neighboHood_cluster;
+    std::string neighborHood_cluster;
     std::string block_group;
     std::string census_tract;
-    std::string voting_precint;
+    std::string voting_precinct;
     double latitude;
-    double longitute;
+    double longitude;
     std::string bid;
     std::string start_date;
     std::string end_date;
@@ -42,10 +45,39 @@ struct DataProperties
     // if geometry type is point: lat and long
 };
 
-struct DataFeature{
+struct DataFeature {
     std::string type;
-    //std::unique_ptr<DataProperties> properties_ptr;
-    DataProperties properties;
+    std::unique_ptr<DataProperties> properties_ptr;
+
+    DataFeature() : type(""), properties_ptr(nullptr)
+    {
+        properties_ptr = std::make_unique<DataProperties>();
+    }
+
+    ~DataFeature(){}
+
+    DataFeature(const DataFeature& other)
+    {
+        this->type = other.type;
+        this->properties_ptr = std::make_unique<DataProperties>(*other.properties_ptr);
+    }
+    
+    DataFeature(DataFeature&& other) noexcept :type(other.type),
+    properties_ptr(std::move(other.properties_ptr))
+    {
+        //*this = std::move(other);
+    }
+
+    DataFeature& operator=(DataFeature&& other) noexcept
+    {
+        if (this != &other)
+        {
+            type = other.type;
+            properties_ptr = std::make_unique<DataProperties>(*other.properties_ptr);
+        }
+
+        return *this;
+    }
 };
 
 struct DataCollection
@@ -55,20 +87,44 @@ struct DataCollection
     std::string crs_type;
     std::string crs_property_name;
     std::unique_ptr<std::vector<DataFeature>> features;
+
+    explicit DataCollection()
+    :type(""), name(""), crs_type(""), crs_property_name(""), features(nullptr)
+    {
+        features = std::make_unique<std::vector<DataFeature>>();
+    }
 };
 
 class Data {
 public:
     Data();
-    ~Data();
-    void print() const;
-    std::vector<DataFeature> setDataFeature(const Json::Value& data);
-    DataCollection setDataCollection(const Json::Value& data);
-    DataProperties setDataProperties(const Json::Value& data);
+    virtual ~Data();
+
+    void printCollection() const;
+    void printFeature(const DataFeature& record) const;
+    void SetDataCollection(const std::string& data_str, DataFormat format);
+
+    DataCollection& GetCollectionPtr()
+    {
+        return *collection_ptr;
+    }
+
+    DataCollection* GetDataCollection()
+    {
+        return collection_ptr.get();
+    }
 
 private:
-    std::unique_ptr<Json::Value> data;
+    Json::Value ParseJsonData(const std::string& data_str);
+    std::unordered_map<std::string, std::vector<std::string>> ParseCSVData(const std::string& data_str);
+    void SetCollectionWithJSONData(const std::string& data_str);
+    void SetCollectionWithCSVData(const std::string& data_str);
+    const DataProperties setDataProperties(const Json::Value& data) const;
+    const DataProperties setDataProperties(const std::string& data) const;
+    const std::vector<DataFeature> setDataFeature(const Json::Value& data);
 
+private:
+    std::unique_ptr<DataCollection> collection_ptr;
 };
 
 #endif // DATA_H
