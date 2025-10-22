@@ -93,13 +93,6 @@ struct DataCollection
     {
         features = std::make_unique<std::vector<DataFeature>>();
     }
-
-    ~DataCollection() = default;
-
-    DataCollection(const DataCollection& other) = default;
-    DataCollection& operator=(DataCollection& other) = default;
-    DataCollection(DataCollection&& other) = default;
-    DataCollection& operator=(DataCollection&& other) = default;
 };
 
 class Data {
