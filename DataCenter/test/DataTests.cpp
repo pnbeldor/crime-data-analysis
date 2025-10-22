@@ -64,12 +64,6 @@ TEST_F(DataTestFixture, GetDataCollectionTest)
     EXPECT_TRUE(collection != nullptr);
 }
 
-TEST_F(DataTestFixture, GetDataCollectionPtrTest)
-{
-    DataCollection& collection = data->GetCollectionPtr();
-    EXPECT_TRUE(&collection != nullptr);
-}
-
 TEST_F(DataTestFixture, SetDataCollectionWithJSONStringTest)
 {
     ASSERT_TRUE(json_str.compare("") != 0);
@@ -77,7 +71,6 @@ TEST_F(DataTestFixture, SetDataCollectionWithJSONStringTest)
     data->SetDataCollection(json_str, DataFormat::JSON);
 
     DataCollection& collection = data->GetCollectionPtr();
-    EXPECT_TRUE(&collection != nullptr);
 
     EXPECT_EQ(collection.type.compare("FeatureCollection"), 0);
     EXPECT_EQ(collection.name.compare("Crime_Incidents_in_the_Last_30_Days"), 0);
@@ -99,8 +92,6 @@ TEST_F(DataTestFixture, SetDataCollectionWithCSVStringTest)
     data->SetDataCollection(csv_test_str, DataFormat::CSV);
     DataCollection& collection = data->GetCollectionPtr();
 
-    EXPECT_TRUE(&collection != nullptr);
-
     EXPECT_TRUE(collection.features != nullptr);
     EXPECT_TRUE((*collection.features)[0].properties_ptr != nullptr);
     EXPECT_TRUE(((*collection.features)[0].properties_ptr->ccn).compare("25157897") == 0);
@@ -118,8 +109,6 @@ TEST_F(DataTestFixture, SetDataInvalidJsonDataTest)
 
     DataCollection& collection = data->GetCollectionPtr();
 
-    ASSERT_TRUE(&collection != nullptr);
-
     ASSERT_TRUE(collection.features != nullptr);
     EXPECT_TRUE((*collection.features).size() == 0);
 }
@@ -130,8 +119,6 @@ TEST_F(DataTestFixture, SetDataInvalidCSVDataTest)
 
     DataCollection& collection = data->GetCollectionPtr();
 
-    ASSERT_TRUE(&collection != nullptr);
-
     ASSERT_TRUE(collection.features != nullptr);
     EXPECT_TRUE((*collection.features).size() == 0);
 }
@@ -141,8 +128,6 @@ TEST_F(DataTestFixture, SetDataEmptyStringTest)
     data->SetDataCollection("", DataFormat::JSON);
 
     DataCollection& collection = data->GetCollectionPtr();
-
-    ASSERT_TRUE(&collection != nullptr);
 
     ASSERT_TRUE(collection.features != nullptr);
     EXPECT_TRUE((*collection.features).size() == 0);
