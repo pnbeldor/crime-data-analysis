@@ -100,7 +100,6 @@ struct DataCollection
     DataCollection& operator=(DataCollection& other) = default;
     DataCollection(DataCollection&& other) = default;
     DataCollection& operator=(DataCollection&& other) = default;
-
 };
 
 class Data {
@@ -110,11 +109,7 @@ public:
 
     void printCollection() const;
     void printFeature(const DataFeature& record) const;
-    const std::vector<DataFeature> setDataFeature(const Json::Value& data);
-    const DataCollection setDataCollection(const Json::Value& data);
-    void SetDataCollection(const std::string& data_str, DataFormat format = DataFormat::JSON);
-    const DataProperties setDataProperties(const Json::Value& data) const;
-    const DataProperties setDataProperties(const std::string& data) const;
+    void SetDataCollection(const std::string& data_str, DataFormat format);
 
     DataCollection& GetCollectionPtr()
     {
@@ -128,13 +123,12 @@ public:
 
 private:
     Json::Value ParseJsonData(const std::string& data_str);
-    std::vector<std::vector<std::string>> ParseCSVData(const std::string& data_str);
-    std::map<std::string, std::vector<std::string>> ParseCSVData2(const std::string& data_str);
-
+    std::unordered_map<std::string, std::vector<std::string>> ParseCSVData(const std::string& data_str);
     void SetCollectionWithJSONData(const std::string& data_str);
     void SetCollectionWithCSVData(const std::string& data_str);
-    void SetCollectionWithCSVData2(const std::string& data_str);
-
+    const DataProperties setDataProperties(const Json::Value& data) const;
+    const DataProperties setDataProperties(const std::string& data) const;
+    const std::vector<DataFeature> setDataFeature(const Json::Value& data);
 
 private:
     std::unique_ptr<DataCollection> collection_ptr;

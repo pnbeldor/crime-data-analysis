@@ -13,7 +13,6 @@ CSVDataLoader::CSVDataLoader()
 CSVDataLoader::CSVDataLoader(DataSource& source, const std::string& location)
     : AbstractDataFetcher(source, location)
 {
-
 }
 
 bool CSVDataLoader::ValidateData([[maybe_unused]] const std::string& data_str)
