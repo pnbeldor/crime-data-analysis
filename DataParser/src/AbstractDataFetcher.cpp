@@ -10,16 +10,14 @@ date: 9/26/2025
 #include "LocalFileDataLoader.h"
 #include "URLDataLoader.h"
 
-AbstractDataFetcher::AbstractDataFetcher()
-{
-}
-
 AbstractDataFetcher::AbstractDataFetcher(const DataSource& source,
                                const std::string& location)
                 : source(source), location(location)
 {
     //data_ = std::make_unique<Data>();
 }
+
+
 
 std::string AbstractDataFetcher::formatToString(DataFormat format)
 {
@@ -33,7 +31,7 @@ std::string AbstractDataFetcher::formatToString(DataFormat format)
     }
 }
 
-std::string AbstractDataFetcher::sourceToString(DataSource source)
+std::string AbstractDataFetcher::sourceToString()
 {
     switch (source)
     {
@@ -71,16 +69,16 @@ std::string AbstractDataFetcher::trim(const std::string& str)
 
 std::string AbstractDataFetcher::LoadData()
 {
-    IDataFetcher* loader = nullptr;
+    std::unique_ptr<IDataFetcher> loader = nullptr;
     std::string fetchedData;
 
     if (source == DataSource::LOCAL_FILE)
-        loader = new LocalFileDataLoader(location);
+        loader = std::make_unique<LocalFileDataLoader>(location);
     else if (source == DataSource::HTTP_REQUEST)
-        loader = new URLDataLoader();
+        loader = std::make_unique<URLDataLoader>();
 
     if (loader != nullptr)
-        fetchedData = loader->fetchData(location);
+        fetchedData = loader->fetchData();
 
     return fetchedData;
 }

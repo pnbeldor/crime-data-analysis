@@ -16,7 +16,6 @@ date: 9/24/2025
 class CSVDataLoader : public AbstractDataFetcher
 {
 public:
-    CSVDataLoader();
     CSVDataLoader(DataSource& source, const std::string& location);
     virtual ~CSVDataLoader() {};
 

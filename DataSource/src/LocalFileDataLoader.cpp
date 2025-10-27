@@ -13,6 +13,7 @@ LocalFileDataLoader::LocalFileDataLoader(const std::string& filePath)
 
     if (!inputFile.is_open()) { // Check if the file opened successfully
         std::cerr << "Error: Could not open file " << filePath << std::endl;
+        throw std::runtime_error("Failed to open the file.");
     }
 }
 
@@ -24,22 +25,12 @@ LocalFileDataLoader::~LocalFileDataLoader()
     }
 }
 
-std::string LocalFileDataLoader::fetchData(const std::string& filePath)
+std::string LocalFileDataLoader::fetchData()
 {
-    //file_stream.open(file_path, std::ios::binary);
+    std::ostringstream ss; // Create a stringstream
+    ss << inputFile.rdbuf(); // Read the entire file buffer into the stringstream
 
-    //std::ifstream inputFile(filePath); // Open the file
-    std::string fileContent;
-
-    if (inputFile.is_open()) { // Check if the file opened successfully
-        std::ostringstream ss; // Create a stringstream
-        ss << inputFile.rdbuf(); // Read the entire file buffer into the stringstream
-        fileContent = ss.str(); // Get the string from the stringstream
-        inputFile.close(); // Close the file
-    } else {
-        std::cerr << "Error: Could not open file " << filePath << std::endl;
-    }
-    return fileContent;
+    return ss.str();
 }
 
 bool LocalFileDataLoader::canHandle(const std::string& source) const
@@ -58,7 +49,8 @@ bool LocalFileDataLoader::canHandle(const std::string& source) const
             std::filesystem::is_regular_file(source, ec);
 }
 
-bool LocalFileDataLoader::fileExists(const std::string& path) {
+bool LocalFileDataLoader::fileExists(const std::string& path)
+{
     std::ifstream file(path);
     return file.good();
 }

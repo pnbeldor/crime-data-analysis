@@ -18,7 +18,7 @@ public:
     virtual ~LocalFileDataLoader();
 
     //std::string fetch_data(const std::string& path) override;
-    std::string fetchData(const std::string& source) override;
+    std::string fetchData() override;
     bool canHandle(const std::string& source) const override;
     
 

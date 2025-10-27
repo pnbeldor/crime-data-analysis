@@ -9,12 +9,12 @@
 #include "URLDataLoader.h"
 #include "DataConfig.h"
 
-JsonDataLoader::JsonDataLoader()
+JsonDataLoader::JsonDataLoader() : AbstractDataFetcher(DataSource::LOCAL_FILE, "")
 {
 }
 
-JsonDataLoader::JsonDataLoader(const DataSource& source,
-                               const std::string& location)
+JsonDataLoader::JsonDataLoader(DataSource source,
+                               std::string location)
     : AbstractDataFetcher(source, location)
 {
 }

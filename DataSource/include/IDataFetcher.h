@@ -11,7 +11,7 @@ public:
      * Fetches data from the source
      * The source identifier (file path or URL)
      */
-    virtual std::string fetchData(const std::string& source) = 0;
+    virtual std::string fetchData() = 0;
     
     /**
      * Checks if this fetcher can handle the given source

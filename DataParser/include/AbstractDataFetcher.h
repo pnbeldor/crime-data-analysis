@@ -15,14 +15,13 @@ Date: 9/26/2025
 
 class AbstractDataFetcher : public DataLoaderInterface {
 public:
-    AbstractDataFetcher();
-    AbstractDataFetcher(const DataSource& source, const std::string& location);
-    virtual ~AbstractDataFetcher() {}
+    explicit AbstractDataFetcher(const DataSource& source, const std::string& location);
+    virtual ~AbstractDataFetcher(){};
 
     std::string LoadData() override;
 
     std::string formatToString(DataFormat format);
-    std::string sourceToString(DataSource source);
+    std::string sourceToString();
     std::vector<std::string> splitString(const std::string& str, char delimiter);
     std::string trim(const std::string& str);
 

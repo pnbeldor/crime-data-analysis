@@ -13,6 +13,6 @@ if(BUILD_TESTING)
     include(GoogleTest)
 
     gtest_discover_tests(CrimeIncidentsTest
-        EXTRA_ARGS --gtest_output=xml:${CMAKE_BINARY_DIR}/test_results/crimeIncidents/)
+        EXTRA_ARGS --gtest_output=json:${CMAKE_BINARY_DIR}/test_results/crimeIncidents/)
 
 endif()

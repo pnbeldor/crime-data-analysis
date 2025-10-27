@@ -15,5 +15,5 @@ if(BUILD_TESTING)
     include(GoogleTest)
 
     gtest_discover_tests(dataTests
-        EXTRA_ARGS --gtest_output=xml:${CMAKE_BINARY_DIR}/test_results/DataCenter/)
+        EXTRA_ARGS --gtest_output=json:${CMAKE_BINARY_DIR}/test_results/DataCenter/)
 endif()

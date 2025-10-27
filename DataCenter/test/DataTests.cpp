@@ -51,7 +51,11 @@ protected:
 
 TEST_F(DataTestFixture, ConstructorTest)
 {
-    EXPECT_TRUE(data != nullptr);
+    Data* dataPtr = new Data();;
+    EXPECT_TRUE(dataPtr != nullptr);
+
+    delete dataPtr;
+    dataPtr = nullptr;
 }
 
 TEST_F(DataTestFixture, GetDataCollectionTest)
@@ -62,6 +66,9 @@ TEST_F(DataTestFixture, GetDataCollectionTest)
 
     collection = data->GetDataCollection();
     EXPECT_TRUE(collection != nullptr);
+
+    delete collection;
+    collection = nullptr;
 }
 
 TEST_F(DataTestFixture, SetDataCollectionWithJSONStringTest)

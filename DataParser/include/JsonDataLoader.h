@@ -17,8 +17,8 @@ Date: 9/24/2025
 class JsonDataLoader : public AbstractDataFetcher
 {
 public:
-    JsonDataLoader();
-    JsonDataLoader(const DataSource& source, const std::string& location);
+JsonDataLoader();
+    JsonDataLoader(const DataSource source, const std::string location);
     virtual ~JsonDataLoader() {};
 
     bool ValidateData(const std::string& data_str) override;

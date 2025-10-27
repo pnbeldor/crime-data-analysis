@@ -19,10 +19,8 @@ URLDataLoader::~URLDataLoader()
     // Destructor
 }
 
-std::string URLDataLoader::fetchData(const std::string& path)
+std::string URLDataLoader::fetchData()
 {
-    std::cout << "Fetching data from URL:  " << path <<"\n";
-
     return "URL Data fetched";
 }
 

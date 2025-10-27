@@ -5,11 +5,6 @@
 
 #include "DataConfig.h"
 
-CSVDataLoader::CSVDataLoader()
-{
-
-}
-
 CSVDataLoader::CSVDataLoader(DataSource& source, const std::string& location)
     : AbstractDataFetcher(source, location)
 {
