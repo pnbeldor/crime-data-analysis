@@ -1,10 +1,13 @@
 #include "crime_analyzer.h"
-#include <jsoncpp/json/json.h>
+
+#include <algorithm>
+#include <cmath>
 #include <curl/curl.h>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <json/json.h>
 #include <sstream>
-#include <cmath>
-#include <algorithm>
 #include <iomanip>
 #include <iostream>
 

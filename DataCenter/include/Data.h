@@ -12,9 +12,11 @@ Date: 9/17/2025
 #include <unordered_map>
 #include <vector>
 
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 
 #include "DataConfig.h"
+
+using dataFeatureMap = std::unordered_map<std::string, std::vector<std::string>>;
 
 struct DataProperties
 {
@@ -98,11 +100,14 @@ struct DataCollection
 class Data {
 public:
     Data();
+    Data(const std::string fieldNames, const std::string fieldDatatypes);
     virtual ~Data();
 
     void printCollection() const;
     void printFeature(const DataFeature& record) const;
     void SetDataCollection(const std::string& data_str, DataFormat format);
+    
+    const dataFeatureMap SetDataFeatureMap(const Json::Value& data_feature);
 
     DataCollection& GetCollectionPtr()
     {
@@ -112,6 +117,11 @@ public:
     DataCollection* GetDataCollection()
     {
         return collection_ptr.get();
+    }
+
+    dataFeatureMap* GetDataFeatureMapPtr()
+    {
+        return dataFeatureMapPtr.get();
     }
 
 private:
@@ -125,6 +135,8 @@ private:
 
 private:
     std::unique_ptr<DataCollection> collection_ptr;
+    std::unique_ptr<std::vector<std::pair<std::string, std::string>>> datasetPtr;
+    std::unique_ptr<dataFeatureMap> dataFeatureMapPtr;
 };
 
 #endif // DATA_H

@@ -17,8 +17,6 @@ AbstractDataFetcher::AbstractDataFetcher(const DataSource& source,
     //data_ = std::make_unique<Data>();
 }
 
-
-
 std::string AbstractDataFetcher::formatToString(DataFormat format)
 {
     switch (format) {

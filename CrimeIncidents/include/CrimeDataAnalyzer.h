@@ -3,11 +3,11 @@
 
 #include <algorithm>
 #include <cmath>
+#include <optional>
 #include <vector>
 
 #include "Data.h"
 #include "DataLoaderInterface.h"
-
 
 class CrimeDataAnalyzer
 {
@@ -15,13 +15,12 @@ public:
     CrimeDataAnalyzer(const DataConfig& config);
     ~CrimeDataAnalyzer();
 
-    std::map<std::string, int> GetCrimesByType() const;
-    std::map<std::string, int> GetCrimesByNeighborhoodCluster() const;
-    std::map<std::string, int> GetCrimesByVotingPrecinct() const;
-    std::map<std::string, int> GetCrimesByDistrict() const;
+    std::optional<std::map<std::string, int>> GetCrimesCountBy(std::string keyStr) const;
+
     double CalculateClearanceRate() const;
     std::vector<DataFeature> FindCrimesInRadius(double center_lat, double center_lon, double radius_km) const;
- 
+    size_t FindCrimesInRadius2(double center_lat, double center_lon, const  double radiusKm) const;
+
     void PrintCollection() const;
 
     Data& GetCrimeDataPtr()
@@ -37,8 +36,9 @@ private:
 
 private:
     std::unique_ptr<DataCollection> crime_data_;
-    DataConfig config_;
     std::unique_ptr<Data> crimeDataPtr_;
+    DataConfig config_;
+    bool IsDataLoaded;
 };
 
 #endif // CRIME_DATA_ANALYZER_HPP

@@ -30,6 +30,27 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+FetchContent_Declare(
+    jsoncpp
+    GIT_REPOSITORY https://github.com/open-source-parsers/jsoncpp.git
+    GIT_TAG        1.9.6
+)
+FetchContent_MakeAvailable(jsoncpp)
+
+FetchContent_Declare(
+    curl
+    GIT_REPOSITORY https://github.com/curl/curl.git
+    GIT_TAG        curl-8_16_0
+)
+FetchContent_MakeAvailable(curl)
+
+# FetchContent_Declare(
+#     curlcpp
+#     GIT_REPOSITORY https://github.com/JosephP91/curlcpp.git
+#     GIT_TAG        3.1
+# )
+# FetchContent_MakeAvailable(curlcpp)
+
 if(MSVC)
     add_compile_options(/W4 /WX)
 else()
@@ -53,7 +74,9 @@ target_link_libraries(${PROJECT_NAME} PUBLIC crimeAnalysis)
 add_subdirectory(DataCenter)
 target_link_libraries(${PROJECT_NAME} PUBLIC data)
 add_subdirectory(DataSource)
-target_link_libraries(${PROJECT_NAME} PUBLIC dataSource)
+target_link_libraries(${PROJECT_NAME} PUBLIC data)
+add_subdirectory(utils)
+target_link_libraries(${PROJECT_NAME} PUBLIC utils)
 add_subdirectory(DataParser)
 target_link_libraries(${PROJECT_NAME} PUBLIC dataParser)
 

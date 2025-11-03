@@ -1,12 +1,13 @@
 
 #include "CrimeDataAnalyzer.h"
 
+#include <cassert>
 #include <iostream>
 
 #include "DataLoaderFactory.h"
 
 CrimeDataAnalyzer::CrimeDataAnalyzer(const DataConfig& config)
-                                     : config_(config)
+                                     : config_(config), IsDataLoaded(false)
 {
     crimeDataPtr_ = std::make_unique<Data>();
     [[maybe_unused]] bool isValidData = LoadAllData();
@@ -22,89 +23,146 @@ bool CrimeDataAnalyzer::LoadAllData()
     bool isValid = false;
 
     auto dataLoader  = factory.CreateDataLoader(this->config_);
-    std::string data_str = dataLoader->LoadData();
+    std::string dataStr = dataLoader->LoadData();
     
-    if (dataLoader->ValidateData(data_str))
+    if (dataLoader->ValidateData(dataStr))
     {
         isValid = true;
-        crimeDataPtr_->SetDataCollection(data_str, this->config_.format);
+        crimeDataPtr_->SetDataCollection(dataStr, this->config_.format);
+        IsDataLoaded = true;
     }
 
     return isValid;
 }
 
-std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByType() const 
+std::optional<std::map<std::string, int>> CrimeDataAnalyzer::GetCrimesCountBy(std::string keyStr) const 
 {
     std::map<std::string, int> result;
 
-     const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
+    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
 
-    for (const auto& record : (*collection.features))
+   //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
+    if ((*mapPtr).contains(keyStr))
     {
-        result[record.properties_ptr->offense]++;
-    }
 
-    return result;
-}
+        auto crimeVec = mapPtr->at(keyStr);
 
-std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByNeighborhoodCluster() const
-{
-    std::map<std::string, int> result;
-    const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
-
-    for (const auto& record : (*collection.features))
-    {
-        if (!record.properties_ptr->neighborHood_cluster.empty())
+        for (const auto& record : crimeVec)
         {
-            result[record.properties_ptr->neighborHood_cluster]++;
+            result[record]++;
         }
+
+        return result;
     }
 
-    return result;
+    return std::nullopt;
+
+    // try {
+    //     auto crimeVec = mapPtr->at(keyStr);
+
+    //     for (const auto& record : crimeVec)
+    //     {
+    //         result[record]++;
+    //     }
+    // } catch (const std::out_of_range& error)
+    // {
+    //     std::cerr << "Error: Key \"" << keyStr << "\" not found: " << error.what() << "\n";
+    // }
+
+    // return result;
 }
 
-std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByVotingPrecinct() const
+/*
+std::map<std::string, int> CrimeDataAnalyzer::GetCrimesCountBy(std::string keyStr) const 
 {
     std::map<std::string, int> result;
-    const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
 
-    for (const auto& record : (*collection.features))
-    {
-        if (!record.properties_ptr->voting_precinct.empty())
+    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+
+//    //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
+//     if ((*mapPtr).contains(keyStr))
+//     {
+
+//         auto crimeVec = mapPtr->at(keyStr);
+
+//         for (const auto& record : crimeVec)
+//         {
+//             result[record]++;
+//         }
+//     }
+
+    try {
+        auto crimeVec = mapPtr->at(keyStr);
+
+        for (const auto& record : crimeVec)
         {
-            result[record.properties_ptr->voting_precinct]++;
+            result[record]++;
         }
+    } catch (const std::out_of_range& error)
+    {
+        std::cerr << "Error: Key \"" << keyStr << "\" not found: " << error.what() << "\n";
     }
 
     return result;
 }
-
-std::map<std::string, int> CrimeDataAnalyzer::GetCrimesByDistrict() const
+*/
+/*
+size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
 {
-    std::map<std::string, int> result;
-    const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
+    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    size_t count = 0;
 
-    for (const auto& record : (*collection.features))
+    const auto& latitude = (*mapPtr).at("LATITUDE");
+    const auto& longitude = (*mapPtr).at("LONGITUDE");
+
+    assert(latitude.size() == longitude.size() && "Longitude and Latitude size are not equal");
+
+    for (size_t i = 0; i < latitude.size(); i++)
     {
-        if (!record.properties_ptr->district.empty())
-        {
-            result[record.properties_ptr->district]++;
-        }
+        auto lat = std::stod(latitude[i]);
+        auto lon = std::stod(longitude[i]);
+        double distance = CalculateDistance(centerLat, centerLon, lat, lon);
+
+        if (distance <= radiusKm)
+            count++;
     }
 
-    return result;
+    return count;
+}
+*/
+size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
+{
+    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    size_t count = 0;
+
+    const auto& latitude = (*mapPtr).at("LATITUDE");
+    const auto& longitude = (*mapPtr).at("LONGITUDE");
+
+    assert(latitude.size() == longitude.size() && "Longitude and Latitude size are not equal");
+
+    for (size_t i = 0; i < latitude.size(); i++)
+    {
+        auto lat = std::stod(latitude[i]);
+        auto lon = std::stod(longitude[i]);
+        double distance = CalculateDistance(centerLat, centerLon, lat, lon);
+
+        if (distance <= radiusKm)
+            count++;
+    }
+
+    return count;
 }
 
-std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double center_lat, double center_lon, const  double radius_km) const
+std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double centerLat, double centerLon, const  double radiusKm) const
 {
     std::vector<DataFeature> result;
     const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
 
     for (const auto& record : (*collection.features))
     {
-        double distance = CalculateDistance(center_lat, center_lon, record.properties_ptr->latitude, record.properties_ptr->longitude);
+        double distance = CalculateDistance(centerLat, centerLon, record.properties_ptr->latitude, record.properties_ptr->longitude);
         
-        if (distance <= radius_km)
+        if (distance <= radiusKm)
         {
             result.push_back(record);
         }

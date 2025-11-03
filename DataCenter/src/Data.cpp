@@ -10,10 +10,40 @@ date: 9/17/2025
 #include <cmath>
 #include <iostream>
 
+#include "Utils.h"
+
 Data::Data() : collection_ptr(nullptr)
 {
+    datasetPtr = nullptr;
+    dataFeatureMapPtr = nullptr;
     collection_ptr = std::make_unique<DataCollection>();
 }
+
+Data::Data(const std::string fieldNames, const std::string fieldDatatypes)
+{
+    Utils utils;
+
+    const auto names = utils.ParseCSVDataLine(fieldNames);
+    const auto types = utils.ParseCSVDataLine(fieldDatatypes);
+
+    /* std::vector<std::pair<std::string, std::string>> */ 
+    auto fields = utils.ZipVectors(names, types);
+
+    datasetPtr = std::make_unique<std::vector<std::pair<std::string, std::string>>>(fields);
+}
+
+// void Data::SetDatasetPtr(const std::string fieldNames, const std::string fieldDatatypes)
+// {
+//     Utils utils;
+
+//     const auto names = utils.ParseCSVDataLine(fieldNames);
+//     const auto types = utils.ParseCSVDataLine(fieldDatatypes);
+
+//     /* std::vector<std::pair<std::string, std::string>> */ 
+//     auto fields = utils.ZipVectors(names, types);
+
+//     datasetPtr = std::make_unique<std::vector<std::pair<std::string, std::string>>>(fields);
+// }
 
 Data::~Data()
 {
@@ -49,10 +79,62 @@ const DataProperties Data::setDataProperties(const Json::Value& data) const
     return properties;
 }
 
+const dataFeatureMap Data::SetDataFeatureMap(const Json::Value& dataFeature)
+{
+    dataFeatureMap responseMap;
+    std::vector<std::string> headers;
+
+    for (const auto& object : dataFeature)
+    {
+        auto keyValuePair = object.getMemberNames();
+
+        for (const auto& val : keyValuePair)
+        {
+            //std::cout << val << "  ";
+            if (!object[val].isObject())
+            {
+                responseMap[val].push_back(object[val].asString());
+            }
+
+            else if (val != "geometry" && val != "meta")
+            {
+                const Json::Value jValue = object[val];
+                auto keyValPair = jValue.getMemberNames();
+
+                for (const auto& kv : keyValPair)
+                {
+                    responseMap[kv].push_back(jValue[kv].asString());
+                }
+            }
+        }
+    }
+
+    dataFeatureMapPtr = std::make_unique<dataFeatureMap>(responseMap);
+
+    // auto it = responseMap.begin();
+
+    // std::advance(it, 10);
+    
+    // std::cout << it->second.size() << "\n\n";
+
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     for (const auto& [key, value] : responseMap)
+    //     {
+    //         std::cout << key << " = " << value[i] << "  ";
+    //     }
+
+    //     std::cout << "\n\n";
+    // }
+
+    return responseMap;
+}
+
 const std::vector<DataFeature> Data::setDataFeature(const Json::Value& data_feature)
 {
-    std::vector<DataFeature> feature_coll;
+    SetDataFeatureMap(data_feature);
 
+    std::vector<DataFeature> feature_coll;
     DataFeature feature;
 
     for (const auto& object : data_feature)
@@ -123,6 +205,37 @@ void Data::printCollection() const
     }
 }
 
+void Data::SetCollectionWithCSVData(const std::string& data_str)
+{
+    auto parseData = ParseCSVData(data_str);
+    dataFeatureMapPtr = make_unique<dataFeatureMap>(parseData);
+/*
+    std::vector<DataFeature> features;
+    std::vector<std::string> fieldNames;
+
+    if (parseData.size() != 0)
+    {
+        fieldNames.reserve(parseData.size()); // Reserve memory
+        //auto it = parseData.begin();
+        //dataSize = it->second.size();
+    }
+
+    for (const auto& pair : parseData)
+        fieldNames.push_back(pair.first);
+
+    for ( size_t i = 0; i < 10; i++)
+    {
+        for (size_t j = 0; j < fieldNames.size(); j++)
+        {
+            std::cout << fieldNames[j] << " = " << parseData[fieldNames[j]][i] << " --- ";
+            //std::cout << fieldNames[j] << " = " << parseData.find(fieldNames[j])->second[i] << " --- ";
+        }
+        std::cout << "\n\n";
+    }
+        */
+}
+
+
 void Data::SetCollectionWithJSONData(const std::string& data_str)
 {
     Json::Value data = ParseJsonData(data_str);
@@ -148,13 +261,19 @@ void Data::SetCollectionWithJSONData(const std::string& data_str)
         }
     }
 
-    if (data.isMember("features"))
+    std::vector<std::string> jsonKeys = {"features", "columns", "data"};
+
+    for (const auto& key : jsonKeys)
     {
-        this->collection_ptr->features = std::make_unique<std::vector<DataFeature>>(setDataFeature(data["features"]));
+        //if (data.isMember("features"))
+        if (data.isMember(key))
+        {
+            this->collection_ptr->features = std::make_unique<std::vector<DataFeature>>(setDataFeature(data[key]));
+        }
     }
 }
 
-
+/*
 void Data::SetCollectionWithCSVData(const std::string& data_str)
 {
     std::unordered_map<std::string, std::vector<std::string>> parseData = ParseCSVData(data_str);
@@ -206,7 +325,7 @@ void Data::SetCollectionWithCSVData(const std::string& data_str)
 
     this->collection_ptr->features = std::make_unique<std::vector<DataFeature>>(features);
 }
-
+ */
 Json::Value Data::ParseJsonData(const std::string& data_str)
 {
     Json::Value jsonData;
@@ -220,60 +339,29 @@ Json::Value Data::ParseJsonData(const std::string& data_str)
     return Json::nullValue;
 }
 
-std::unordered_map<std::string, std::vector<std::string>> Data::ParseCSVData(const std::string& data_str)
+dataFeatureMap Data::ParseCSVData(const std::string& data_str)
 {
+    Utils utils;
     std::stringstream ss(data_str);
     std::string line;
-    std::unordered_map<std::string, std::vector<std::string>> data;
+    dataFeatureMap data;
     std::vector<std::string> headers;
 
     // Read Header row
     if (std::getline(ss, line))
     {
-        std::stringstream ss1(line);
-        bool in_quotes = false;
-        std::string current_cell;
-
-        //separate the line by comma delimiter
-        for (char c : line) {
-            if (c == '"') {
-                in_quotes = !in_quotes;
-            } else if (c == ',' && !in_quotes) {
-                headers.push_back(current_cell);
-                current_cell.clear();
-            } else {
-                current_cell += c;
-            }
-        }
-
-        headers.push_back(current_cell);
+        headers = utils.ParseCSVDataLine(line);
     }
 
-    // Read data rows
     while (std::getline(ss, line))
     {
-        std::vector<std::string> row;
-        std::stringstream ss1(line);
-        bool in_quotes = false;
-        std::string current_cell;
-        int col_index = 0;
-
-        //separate the line by comma delimiter
-        for (char c : line) {
-            if (c == '"') {
-                in_quotes = !in_quotes;
-            } else if (c == ',' && !in_quotes) {
-                data[headers[col_index]].push_back(current_cell);
-                current_cell.clear();
-                col_index++;
-            } else {
-                current_cell += c;
-            }
+        auto result = utils.ParseCSVDataLine(line);
+        if (result.size() == headers.size())
+        {
+            for (size_t i = 0; i < result.size(); i++)
+                data[headers[i]].push_back(result[i]);
         }
-
-        data[headers[col_index]].push_back(current_cell); // Add the last cell
     }
 
     return data;
 }
-

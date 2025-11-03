@@ -5,7 +5,7 @@
 #include <vector>
 #include <map>
 #include <chrono>
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 
 namespace crime_analysis {
 
