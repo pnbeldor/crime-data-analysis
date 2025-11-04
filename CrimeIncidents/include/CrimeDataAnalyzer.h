@@ -25,7 +25,7 @@ public:
 
     Data& GetCrimeDataPtr()
     {
-        return *crimeDataPtr_;
+        return *crimeDataPtr;
     }
 
 private:
@@ -36,8 +36,8 @@ private:
 
 private:
     std::unique_ptr<DataCollection> crime_data_;
-    std::unique_ptr<Data> crimeDataPtr_;
-    DataConfig config_;
+    std::unique_ptr<Data> crimeDataPtr;
+    DataConfig coonfig;
     bool IsDataLoaded;
 };
 

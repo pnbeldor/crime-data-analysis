@@ -7,9 +7,9 @@
 #include "DataLoaderFactory.h"
 
 CrimeDataAnalyzer::CrimeDataAnalyzer(const DataConfig& config)
-                                     : config_(config), IsDataLoaded(false)
+                                     : coonfig(config), IsDataLoaded(false)
 {
-    crimeDataPtr_ = std::make_unique<Data>();
+    crimeDataPtr = std::make_unique<Data>();
     [[maybe_unused]] bool isValidData = LoadAllData();
 }
 
@@ -22,13 +22,13 @@ bool CrimeDataAnalyzer::LoadAllData()
     DataLoaderFactory factory;
     bool isValid = false;
 
-    auto dataLoader  = factory.CreateDataLoader(this->config_);
+    auto dataLoader  = factory.CreateDataLoader(this->coonfig);
     std::string dataStr = dataLoader->LoadData();
     
     if (dataLoader->ValidateData(dataStr))
     {
         isValid = true;
-        crimeDataPtr_->SetDataCollection(dataStr, this->config_.format);
+        crimeDataPtr->SetDataCollection(dataStr, this->coonfig.format);
         IsDataLoaded = true;
     }
 
@@ -39,7 +39,7 @@ std::optional<std::map<std::string, int>> CrimeDataAnalyzer::GetCrimesCountBy(st
 {
     std::map<std::string, int> result;
 
-    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
 
    //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
     if ((*mapPtr).contains(keyStr))
@@ -77,7 +77,7 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesCountBy(std::string keySt
 {
     std::map<std::string, int> result;
 
-    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
 
 //    //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
 //     if ((*mapPtr).contains(keyStr))
@@ -109,7 +109,7 @@ std::map<std::string, int> CrimeDataAnalyzer::GetCrimesCountBy(std::string keySt
 /*
 size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
 {
-    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
     size_t count = 0;
 
     const auto& latitude = (*mapPtr).at("LATITUDE");
@@ -132,7 +132,7 @@ size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon
 */
 size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
 {
-    auto mapPtr = crimeDataPtr_->GetDataFeatureMapPtr();
+    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
     size_t count = 0;
 
     const auto& latitude = (*mapPtr).at("LATITUDE");
@@ -156,7 +156,7 @@ size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon
 std::vector<DataFeature> CrimeDataAnalyzer::FindCrimesInRadius(double centerLat, double centerLon, const  double radiusKm) const
 {
     std::vector<DataFeature> result;
-    const DataCollection& collection = crimeDataPtr_->GetCollectionPtr();
+    const DataCollection& collection = crimeDataPtr->GetCollectionPtr();
 
     for (const auto& record : (*collection.features))
     {
@@ -189,13 +189,13 @@ double CrimeDataAnalyzer::CalculateDistance(double lat1, double lon1, double lat
 
 void CrimeDataAnalyzer::PrintCollection() const
 {
-    std::cout << "Type = " << crimeDataPtr_->GetDataCollection()->type <<"\n";
-    std::cout << "Name = " << crimeDataPtr_->GetDataCollection()->name << "\n";
-    std::cout << "crs type = " << crimeDataPtr_->GetDataCollection()->crs_type <<"\n";
-    std::cout << "CRS Properties Name = " << crimeDataPtr_->GetDataCollection()->crs_property_name << "\n";
+    std::cout << "Type = " << crimeDataPtr->GetDataCollection()->type <<"\n";
+    std::cout << "Name = " << crimeDataPtr->GetDataCollection()->name << "\n";
+    std::cout << "crs type = " << crimeDataPtr->GetDataCollection()->crs_type <<"\n";
+    std::cout << "CRS Properties Name = " << crimeDataPtr->GetDataCollection()->crs_property_name << "\n";
 
-    for (const auto& feature : (*(crimeDataPtr_->GetDataCollection())->features))
+    for (const auto& feature : (*(crimeDataPtr->GetDataCollection())->features))
     {
-        crimeDataPtr_->printFeature(feature);
+        crimeDataPtr->printFeature(feature);
     }
 }

@@ -71,11 +71,16 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     std::cout << " =============== Crime by voting precinct ======================\n\n";
     keyStr = "VOTING_PRECINCT";
-    auto resultByVotingPrecinct  = crimeDataAnalyzer.GetCrimesCountBy(keyStr);
-
-    for (const auto& value : *resultByVotingPrecinct)
+    if (auto resultByVotingPrecinct  = crimeDataAnalyzer.GetCrimesCountBy(keyStr))
     {
-        std::cout << value.first << ": " << value.second << "\n";
+        for (const auto& value : *resultByVotingPrecinct)
+        {
+            std::cout << value.first << ": " << value.second << "\n";
+        }
+    }
+    else
+    {
+        std::cerr << "Error: Key \"" << keyStr << "\" not found: ";
     }
 
     std::cout << " =============== Crime within a radius ======================\n\n";
