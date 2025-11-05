@@ -12,7 +12,7 @@ LocalFileDataLoader::LocalFileDataLoader(const std::string& filePath)
     inputFile.open(filePath);
 
     if (!inputFile.is_open()) { // Check if the file opened successfully
-        std::cout << "Error: Could not open file " << filePath << std::endl;
+        std::cerr << "Error: Could not open file " << filePath << std::endl;
         throw std::runtime_error("Failed to open the file.");
     }
 }

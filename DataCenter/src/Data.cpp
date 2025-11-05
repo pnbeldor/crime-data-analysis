@@ -209,30 +209,6 @@ void Data::SetCollectionWithCSVData(const std::string& data_str)
 {
     auto parseData = ParseCSVData(data_str);
     dataFeatureMapPtr = make_unique<dataFeatureMap>(parseData);
-/*
-    std::vector<DataFeature> features;
-    std::vector<std::string> fieldNames;
-
-    if (parseData.size() != 0)
-    {
-        fieldNames.reserve(parseData.size()); // Reserve memory
-        //auto it = parseData.begin();
-        //dataSize = it->second.size();
-    }
-
-    for (const auto& pair : parseData)
-        fieldNames.push_back(pair.first);
-
-    for ( size_t i = 0; i < 10; i++)
-    {
-        for (size_t j = 0; j < fieldNames.size(); j++)
-        {
-            std::cout << fieldNames[j] << " = " << parseData[fieldNames[j]][i] << " --- ";
-            //std::cout << fieldNames[j] << " = " << parseData.find(fieldNames[j])->second[i] << " --- ";
-        }
-        std::cout << "\n\n";
-    }
-        */
 }
 
 
@@ -273,59 +249,6 @@ void Data::SetCollectionWithJSONData(const std::string& data_str)
     }
 }
 
-/*
-void Data::SetCollectionWithCSVData(const std::string& data_str)
-{
-    std::unordered_map<std::string, std::vector<std::string>> parseData = ParseCSVData(data_str);
-
-    std::vector<DataFeature> features;
-
-    size_t dataSize = 0;
-
-    if (parseData.size() != 0)
-    {
-        auto it = parseData.begin();
-        dataSize = it->second.size();
-    }
-
-    for ( size_t i = 0; i < dataSize; i++)
-    {
-        DataFeature dataFeature;
-
-        dataFeature.properties_ptr->ccn = parseData.find("CCN")->second[i];
-        dataFeature.properties_ptr->report_date = parseData.find("REPORT_DAT")->second[i];
-        dataFeature.properties_ptr->shift = parseData.find("SHIFT")->second[i];
-        dataFeature.properties_ptr->method = parseData.find("METHOD")->second[i];
-        dataFeature.properties_ptr->offense = parseData.find("OFFENSE")->second[i];
-        dataFeature.properties_ptr->block = parseData.find("BLOCK")->second[i];
-        
-        try
-        {
-            dataFeature.properties_ptr->x_block = std::stod(parseData.find("XBLOCK")->second[i]);
-            dataFeature.properties_ptr->y_blocK = std::stod(parseData.find("YBLOCK")->second[i]);
-            dataFeature.properties_ptr->longitude = std::stod(parseData.find("LONGITUDE")->second[i]);
-            dataFeature.properties_ptr->latitude = std::stod(parseData.find("LATITUDE")->second[i]);
-            dataFeature.properties_ptr->object_id = std::stod(parseData.find("OBJECTID")->second[i]);
-        } catch (const std::invalid_argument& e) {
-            std::cerr << "Error: " << "  " << e.what() << std::endl;
-        }
-        dataFeature.properties_ptr->ward = parseData.find("WARD")->second[i];
-        dataFeature.properties_ptr->anc = parseData.find("ANC")->second[i];
-        dataFeature.properties_ptr->district = parseData.find("DISTRICT")->second[i];
-        dataFeature.properties_ptr->psa = parseData.find("PSA")->second[i];
-        dataFeature.properties_ptr->neighborHood_cluster = parseData.find("NEIGHBORHOOD_CLUSTER")->second[i];
-        dataFeature.properties_ptr->block_group = parseData.find("BLOCK_GROUP")->second[i];
-        dataFeature.properties_ptr->census_tract = parseData.find("CENSUS_TRACT")->second[i];
-        dataFeature.properties_ptr->voting_precinct = parseData.find("VOTING_PRECINCT")->second[i];
-        dataFeature.properties_ptr->start_date = parseData.find("START_DATE")->second[i];
-        dataFeature.properties_ptr->end_date = parseData.find("END_DATE")->second[i];
-
-        features.push_back(dataFeature);
-    }
-
-    this->collection_ptr->features = std::make_unique<std::vector<DataFeature>>(features);
-}
- */
 Json::Value Data::ParseJsonData(const std::string& data_str)
 {
     Json::Value jsonData;

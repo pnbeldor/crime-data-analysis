@@ -17,9 +17,10 @@ public:
 
     std::optional<std::map<std::string, int>> GetCrimesCountBy(std::string keyStr) const;
 
+    std::multimap<int, std::string, std::greater<int>> SortByValue(const std::map<std::string, int>& unsortedMap);
     double CalculateClearanceRate() const;
     std::vector<DataFeature> FindCrimesInRadius(double center_lat, double center_lon, double radius_km) const;
-    size_t FindCrimesInRadius2(double center_lat, double center_lon, const  double radiusKm) const;
+    size_t FindTotalCrimesInRadius(double center_lat, double center_lon, const  double radiusKm) const;
 
     void PrintCollection() const;
 

@@ -2,9 +2,7 @@ cmake_minimum_required(VERSION 3.31)
 project(openDataAnalysis VERSION 0.1.0)
 
 set(CMAKE_C_COMPILEER "/usr/bin/clang")
-set(CMAKE_CXX_COMPILEER "/usr/bin/clang++
-
-")
+set(CMAKE_CXX_COMPILEER "/usr/bin/clang++")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,7 +15,6 @@ include(CTest)
 enable_testing()
 
 configure_file(DataConfig.h.in DataFetchConfig.h)
-
 
 #include(GnuInstallDirs)
 
