@@ -2,9 +2,7 @@ cmake_minimum_required(VERSION 3.31)
 project(openDataAnalysis VERSION 0.1.0)
 
 set(CMAKE_C_COMPILEER "/usr/bin/clang")
-set(CMAKE_CXX_COMPILEER "/usr/bin/clang++
-
-")
+set(CMAKE_CXX_COMPILEER "/usr/bin/clang++")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,7 +15,9 @@ include(CTest)
 enable_testing()
 
 configure_file(DataConfig.h.in DataFetchConfig.h)
+set(RESOURCES_DIR "${PROJECT_SOURCE_DIR}/resources")
 
+add_definitions(-DRESOURCES_PATH="${RESOURCES_DIR}")
 
 #include(GnuInstallDirs)
 
@@ -44,6 +44,17 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(curl)
 ]]
+FetchContent_Declare(
+    simdjson
+    GIT_REPOSITORY https://github.com/simdjson/simdjson.git
+    GIT_TAG        v4.2.1
+    GIT_SHALLOW TRUE)
+
+#set(SIMDJSON_JUST_LIBRARY ON CACHE INTERNAL "")
+#set(SIMDJSON_BUILD_SHARED_LIB ON CACHE INTERNAL "")
+
+FetchContent_MakeAvailable(simdjson)
+
 # FetchContent_Declare(
 #     curlcpp
 #     GIT_REPOSITORY https://github.com/JosephP91/curlcpp.git

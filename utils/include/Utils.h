@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 
+#include "simdjson.h"
 
 class Utils
 {
@@ -15,6 +16,7 @@ public:
 
     std::vector<std::vector<std::string>> ParseCSVData(const std::string& data_str);
     std::vector<std::string> ParseCSVDataLine(const std::string& dataLine);
+    std::string ParseElement(const simdjson::dom::element& element);
 
     template <typename T1, typename T2>
     std::vector<std::pair<T1, T2>> ZipVectors(const std::vector<T1>& vec1, const std::vector<T2>& vec2)

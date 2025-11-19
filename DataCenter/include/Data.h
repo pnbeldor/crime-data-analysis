@@ -13,6 +13,7 @@ Date: 9/17/2025
 #include <vector>
 
 #include <json/json.h>
+#include "simdjson.h"
 
 #include "DataConfig.h"
 
@@ -102,6 +103,7 @@ public:
     Data();
     Data(const std::string fieldNames, const std::string fieldDatatypes);
     virtual ~Data();
+    const simdjson::ondemand::document ParseJsonData2(const std::string& data_str);
 
     void printCollection() const;
     void printFeature(const DataFeature& record) const;

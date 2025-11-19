@@ -7,7 +7,7 @@
 class MockDataFetcher : public IDataFetcher
 {
 public:
-    MOCK_METHOD(std::string fetchData, (const std::string& source), (override));
+    MOCK_METHOD(std::string FetchData, (const std::string& source), (override));
     MOCK_METHOD(bool canHandle, (const std::string& source), (const, override));
 };
 

@@ -41,10 +41,8 @@ std::optional<std::map<std::string, int>> CrimeDataAnalyzer::GetCrimesCountBy(st
 
     auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
 
-   //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
     if ((*mapPtr).contains(keyStr))
     {
-
         auto crimeVec = mapPtr->at(keyStr);
 
         for (const auto& record : crimeVec)
@@ -56,81 +54,21 @@ std::optional<std::map<std::string, int>> CrimeDataAnalyzer::GetCrimesCountBy(st
     }
 
     return std::nullopt;
-
-    // try {
-    //     auto crimeVec = mapPtr->at(keyStr);
-
-    //     for (const auto& record : crimeVec)
-    //     {
-    //         result[record]++;
-    //     }
-    // } catch (const std::out_of_range& error)
-    // {
-    //     std::cerr << "Error: Key \"" << keyStr << "\" not found: " << error.what() << "\n";
-    // }
-
-    // return result;
 }
 
-/*
-std::map<std::string, int> CrimeDataAnalyzer::GetCrimesCountBy(std::string keyStr) const 
+std::multimap<int, std::string, std::greater<int>> CrimeDataAnalyzer::SortByValue(const std::map<std::string, int>& unsortedMap)
 {
-    std::map<std::string, int> result;
+    std::multimap<int, std::string, std::greater<int>> sortedMap;
 
-    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
-
-//    //if ((*mapPtr).find(keyStr) != (*mapPtr).end())
-//     if ((*mapPtr).contains(keyStr))
-//     {
-
-//         auto crimeVec = mapPtr->at(keyStr);
-
-//         for (const auto& record : crimeVec)
-//         {
-//             result[record]++;
-//         }
-//     }
-
-    try {
-        auto crimeVec = mapPtr->at(keyStr);
-
-        for (const auto& record : crimeVec)
-        {
-            result[record]++;
-        }
-    } catch (const std::out_of_range& error)
+    for (const auto& pair : unsortedMap)
     {
-        std::cerr << "Error: Key \"" << keyStr << "\" not found: " << error.what() << "\n";
+        sortedMap.insert({pair.second, pair.first});
     }
 
-    return result;
+    return sortedMap;
 }
-*/
-/*
-size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
-{
-    auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
-    size_t count = 0;
 
-    const auto& latitude = (*mapPtr).at("LATITUDE");
-    const auto& longitude = (*mapPtr).at("LONGITUDE");
-
-    assert(latitude.size() == longitude.size() && "Longitude and Latitude size are not equal");
-
-    for (size_t i = 0; i < latitude.size(); i++)
-    {
-        auto lat = std::stod(latitude[i]);
-        auto lon = std::stod(longitude[i]);
-        double distance = CalculateDistance(centerLat, centerLon, lat, lon);
-
-        if (distance <= radiusKm)
-            count++;
-    }
-
-    return count;
-}
-*/
-size_t CrimeDataAnalyzer::FindCrimesInRadius2(double centerLat, double centerLon, const  double radiusKm) const
+size_t CrimeDataAnalyzer::FindTotalCrimesInRadius(double centerLat, double centerLon, const  double radiusKm) const
 {
     auto mapPtr = crimeDataPtr->GetDataFeatureMapPtr();
     size_t count = 0;

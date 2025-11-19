@@ -15,7 +15,7 @@ public:
     URLDataLoader();
     virtual ~URLDataLoader();
     
-    std::string fetchData() override;
+    std::string FetchData() override;
     bool canHandle(const std::string& source) const override;
     
 private:

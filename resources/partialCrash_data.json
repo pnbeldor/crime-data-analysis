@@ -1,0 +1,2272 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "h9gi-nx95",
+      "name" : "Motor Vehicle Collisions - Crashes",
+      "assetType" : "dataset",
+      "attribution" : "Police Department (NYPD)",
+      "averageRating" : 0,
+      "category" : "Public Safety",
+      "createdAt" : 1398703304,
+      "description" : "The Motor Vehicle Collisions crash table contains details on the crash event. Each row represents a crash event. The Motor Vehicle Collisions data tables contain information from all police reported motor vehicle collisions in NYC. The police report (MV104-AN) is required to be filled out for collisions where someone is injured or killed, or where there is at least $1000 worth of damage (https://www.nhtsa.gov/sites/nhtsa.dot.gov/files/documents/ny_overlay_mv-104an_rev05_2004.pdf).  It should be noted that the data is preliminary and subject to change when the MV-104AN forms are amended based on revised crash details.For the most accurate, up to date statistics on traffic fatalities, please refer to the <a href=\"https://www1.nyc.gov/site/nypd/stats/traffic-data/traffic-data-collision.page\" style=\"color:#187bcd;\">NYPD Motor Vehicle Collisions page</a> (updated weekly) or <a href=\"http://www.nycvzv.info/\" style=\"color:#187bcd;\">Vision Zero View</a> (updated monthly).\r\n\r\n</p>\r\nDue to success of the CompStat program, NYPD began to ask how to apply the CompStat principles  to other problems.  Other than homicides, the fatal incidents with which police have the most contact with the public are fatal traffic collisions.  Therefore in April 1998, the Department implemented TrafficStat, which uses the CompStat model to work towards improving traffic safety.  Police officers complete form MV-104AN  for all vehicle collisions.  The MV-104AN is a New York State form that has all of the details of a traffic collision.  Before implementing Trafficstat, there was no uniform traffic safety data collection procedure for all of the NYPD precincts.  Therefore, the Police Department implemented the Traffic Accident Management System (TAMS) in July 1999 in order to collect traffic data in a uniform method across the City.  TAMS required the precincts manually enter a few selected MV-104AN fields to collect very basic intersection traffic crash statistics which included the number of accidents, injuries and fatalities. As the years progressed, there grew a need for additional traffic data so that more detailed analyses could be conducted. The Citywide traffic safety initiative, Vision Zero started in the year 2014.  Vision Zero further emphasized the need for the collection of more traffic data in order to work towards the Vision Zero goal, which is to eliminate traffic fatalities.  Therefore, the Department in March 2016 replaced the TAMS with the new Finest Online Records Management System (FORMS).  FORMS enables the police officers to electronically, using a Department cellphone or computer, enter all of the MV-104AN data fields and stores all of the MV-104AN data fields in the Department’s crime data warehouse.  Since all of the MV-104AN data fields are now stored for each traffic collision, detailed traffic safety analyses can be conducted as applicable.",
+      "diciBackend" : false,
+      "displayType" : "table",
+      "downloadCount" : 294637,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "iconUrl" : "fileId:oW0cJILkcnktYb_UJrVr9IXc0JUNpGXLeyQzGnoKxEI",
+      "locked" : false,
+      "newBackend" : true,
+      "numberOfComments" : 36,
+      "oid" : 37035625,
+      "provenance" : "official",
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1618843377,
+      "publicationGroup" : 1561483,
+      "publicationStage" : "published",
+      "rowIdentifierColumnId" : 537036751,
+      "rowsUpdatedAt" : 1761346242,
+      "rowsUpdatedBy" : "5fuc-pqz2",
+      "tableId" : 18236948,
+      "totalTimesRated" : 0,
+      "viewCount" : 759505,
+      "viewLastModified" : 1618843378,
+      "viewType" : "tabular",
+      "approvals" : [ {
+        "reviewedAt" : 1565999729,
+        "reviewedAutomatically" : true,
+        "state" : "approved",
+        "submissionId" : 3540159,
+        "submissionObject" : "public_audience_request",
+        "submissionOutcome" : "change_audience",
+        "submittedAt" : 1565999729,
+        "targetAudience" : "public",
+        "workflowId" : 2285,
+        "submissionDetails" : {
+          "permissionType" : "READ"
+        },
+        "submissionOutcomeApplication" : {
+          "failureCount" : 0,
+          "status" : "success"
+        },
+        "submitter" : {
+          "id" : "5fuc-pqz2",
+          "displayName" : "NYC OpenData"
+        }
+      } ],
+      "clientContext" : {
+        "clientContextVariables" : [ ],
+        "inheritedVariables" : { }
+      },
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 537036724,
+        "name" : "CRASH DATE",
+        "dataTypeName" : "calendar_date",
+        "description" : "Occurrence date of collision",
+        "fieldName" : "crash_date",
+        "position" : 1,
+        "renderTypeName" : "calendar_date",
+        "tableColumnId" : 19436653,
+        "width" : 148,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "2025-10-21T00:00:00.000",
+          "null" : "0",
+          "top" : [ {
+            "item" : "2014-01-21T00:00:00.000",
+            "count" : "1161"
+          }, {
+            "item" : "2018-11-15T00:00:00.000",
+            "count" : "1065"
+          }, {
+            "item" : "2017-12-15T00:00:00.000",
+            "count" : "999"
+          }, {
+            "item" : "2017-05-19T00:00:00.000",
+            "count" : "974"
+          }, {
+            "item" : "2015-01-18T00:00:00.000",
+            "count" : "961"
+          }, {
+            "item" : "2014-02-03T00:00:00.000",
+            "count" : "960"
+          }, {
+            "item" : "2015-03-06T00:00:00.000",
+            "count" : "939"
+          }, {
+            "item" : "2017-05-18T00:00:00.000",
+            "count" : "911"
+          }, {
+            "item" : "2017-01-07T00:00:00.000",
+            "count" : "896"
+          }, {
+            "item" : "2018-03-02T00:00:00.000",
+            "count" : "884"
+          }, {
+            "item" : "2017-12-14T00:00:00.000",
+            "count" : "883"
+          }, {
+            "item" : "2016-09-30T00:00:00.000",
+            "count" : "872"
+          }, {
+            "item" : "2013-11-26T00:00:00.000",
+            "count" : "867"
+          }, {
+            "item" : "2018-11-09T00:00:00.000",
+            "count" : "867"
+          }, {
+            "item" : "2017-04-28T00:00:00.000",
+            "count" : "857"
+          }, {
+            "item" : "2016-10-21T00:00:00.000",
+            "count" : "851"
+          }, {
+            "item" : "2013-03-08T00:00:00.000",
+            "count" : "851"
+          }, {
+            "item" : "2018-06-29T00:00:00.000",
+            "count" : "845"
+          }, {
+            "item" : "2017-06-22T00:00:00.000",
+            "count" : "845"
+          }, {
+            "item" : "2018-12-14T00:00:00.000",
+            "count" : "841"
+          } ],
+          "smallest" : "2012-07-01T00:00:00.000",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "view" : "date",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036725,
+        "name" : "CRASH TIME",
+        "dataTypeName" : "text",
+        "description" : "Occurrence time of collision",
+        "fieldName" : "crash_time",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436654,
+        "width" : 148,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "9:59",
+          "null" : "0",
+          "top" : [ {
+            "item" : "16:00",
+            "count" : "29643"
+          }, {
+            "item" : "15:00",
+            "count" : "29145"
+          }, {
+            "item" : "17:00",
+            "count" : "29129"
+          }, {
+            "item" : "18:00",
+            "count" : "26885"
+          }, {
+            "item" : "14:00",
+            "count" : "26696"
+          }, {
+            "item" : "13:00",
+            "count" : "24848"
+          }, {
+            "item" : "0:00",
+            "count" : "23426"
+          }, {
+            "item" : "9:00",
+            "count" : "22628"
+          }, {
+            "item" : "12:00",
+            "count" : "22569"
+          }, {
+            "item" : "19:00",
+            "count" : "22513"
+          }, {
+            "item" : "16:30",
+            "count" : "21285"
+          }, {
+            "item" : "8:00",
+            "count" : "21259"
+          }, {
+            "item" : "10:00",
+            "count" : "20934"
+          }, {
+            "item" : "14:30",
+            "count" : "20671"
+          }, {
+            "item" : "11:00",
+            "count" : "20386"
+          }, {
+            "item" : "17:30",
+            "count" : "20205"
+          }, {
+            "item" : "20:00",
+            "count" : "18150"
+          }, {
+            "item" : "18:30",
+            "count" : "17959"
+          }, {
+            "item" : "8:30",
+            "count" : "17634"
+          }, {
+            "item" : "13:30",
+            "count" : "17327"
+          } ],
+          "smallest" : "0:00",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036726,
+        "name" : "BOROUGH",
+        "dataTypeName" : "text",
+        "description" : "Borough where collision occurred",
+        "fieldName" : "borough",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436655,
+        "width" : 184,
+        "cachedContents" : {
+          "non_null" : "1536066",
+          "largest" : "STATEN ISLAND",
+          "null" : "679230",
+          "top" : [ {
+            "item" : "BROOKLYN",
+            "count" : "492151"
+          }, {
+            "item" : "QUEENS",
+            "count" : "411634"
+          }, {
+            "item" : "MANHATTAN",
+            "count" : "340477"
+          }, {
+            "item" : "BRONX",
+            "count" : "227482"
+          }, {
+            "item" : "STATEN ISLAND",
+            "count" : "64322"
+          } ],
+          "smallest" : "BRONX",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036727,
+        "name" : "ZIP CODE",
+        "dataTypeName" : "text",
+        "description" : "Postal code of incident occurrence",
+        "fieldName" : "zip_code",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436656,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : "1535791",
+          "largest" : "11697",
+          "null" : "679505",
+          "top" : [ {
+            "item" : "11207",
+            "count" : "30361"
+          }, {
+            "item" : "11236",
+            "count" : "20885"
+          }, {
+            "item" : "11101",
+            "count" : "20514"
+          }, {
+            "item" : "11203",
+            "count" : "19854"
+          }, {
+            "item" : "11234",
+            "count" : "19361"
+          }, {
+            "item" : "11385",
+            "count" : "19237"
+          }, {
+            "item" : "11208",
+            "count" : "18958"
+          }, {
+            "item" : "11212",
+            "count" : "18820"
+          }, {
+            "item" : "11201",
+            "count" : "18533"
+          }, {
+            "item" : "11226",
+            "count" : "18287"
+          }, {
+            "item" : "10019",
+            "count" : "18165"
+          }, {
+            "item" : "10016",
+            "count" : "17490"
+          }, {
+            "item" : "10036",
+            "count" : "17349"
+          }, {
+            "item" : "11434",
+            "count" : "17329"
+          }, {
+            "item" : "10001",
+            "count" : "16798"
+          }, {
+            "item" : "10022",
+            "count" : "16526"
+          }, {
+            "item" : "10002",
+            "count" : "16327"
+          }, {
+            "item" : "11233",
+            "count" : "16203"
+          }, {
+            "item" : "11206",
+            "count" : "15544"
+          }, {
+            "item" : "10013",
+            "count" : "15380"
+          } ],
+          "smallest" : "     ",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036728,
+        "name" : "LATITUDE",
+        "dataTypeName" : "number",
+        "description" : "Latitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326) ",
+        "fieldName" : "latitude",
+        "position" : 5,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436657,
+        "width" : 196,
+        "cachedContents" : {
+          "non_null" : "1974983",
+          "largest" : "43.3444440",
+          "null" : "240313",
+          "top" : [ {
+            "item" : "0E-7",
+            "count" : "6402"
+          }, {
+            "item" : "40.861862",
+            "count" : "918"
+          }, {
+            "item" : "40.608757",
+            "count" : "844"
+          }, {
+            "item" : "40.696033",
+            "count" : "822"
+          }, {
+            "item" : "40.8047",
+            "count" : "706"
+          }, {
+            "item" : "40.798256",
+            "count" : "661"
+          }, {
+            "item" : "40.759308",
+            "count" : "639"
+          }, {
+            "item" : "40.675735",
+            "count" : "626"
+          }, {
+            "item" : "40.6960346",
+            "count" : "587"
+          }, {
+            "item" : "40.658577",
+            "count" : "575"
+          }, {
+            "item" : "40.704422",
+            "count" : "523"
+          }, {
+            "item" : "40.75898",
+            "count" : "509"
+          }, {
+            "item" : "40.69168",
+            "count" : "504"
+          }, {
+            "item" : "40.604153",
+            "count" : "496"
+          }, {
+            "item" : "40.7606",
+            "count" : "479"
+          }, {
+            "item" : "40.77077",
+            "count" : "476"
+          }, {
+            "item" : "40.704494",
+            "count" : "474"
+          }, {
+            "item" : "40.83801",
+            "count" : "474"
+          }, {
+            "item" : "40.7606005",
+            "count" : "474"
+          }, {
+            "item" : "40.665257",
+            "count" : "470"
+          } ],
+          "smallest" : "0E-7",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036729,
+        "name" : "LONGITUDE",
+        "dataTypeName" : "number",
+        "description" : "Longitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326)",
+        "fieldName" : "longitude",
+        "position" : 6,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436658,
+        "width" : 208,
+        "cachedContents" : {
+          "non_null" : "1974983",
+          "largest" : "0E-7",
+          "null" : "240313",
+          "top" : [ {
+            "item" : "0E-7",
+            "count" : "6402"
+          }, {
+            "item" : "-74.0380860",
+            "count" : "846"
+          }, {
+            "item" : "-73.89063",
+            "count" : "790"
+          }, {
+            "item" : "-73.98453",
+            "count" : "738"
+          }, {
+            "item" : "-73.91282",
+            "count" : "722"
+          }, {
+            "item" : "-73.89686",
+            "count" : "687"
+          }, {
+            "item" : "-73.91243",
+            "count" : "660"
+          }, {
+            "item" : "-73.94476",
+            "count" : "639"
+          }, {
+            "item" : "-73.9112",
+            "count" : "613"
+          }, {
+            "item" : "-73.9845292",
+            "count" : "587"
+          }, {
+            "item" : "-73.882744",
+            "count" : "562"
+          }, {
+            "item" : "-73.91727",
+            "count" : "555"
+          }, {
+            "item" : "-73.89083",
+            "count" : "552"
+          }, {
+            "item" : "-73.871605",
+            "count" : "499"
+          }, {
+            "item" : "-73.82744",
+            "count" : "498"
+          }, {
+            "item" : "-74.0519800",
+            "count" : "495"
+          }, {
+            "item" : "-73.99915",
+            "count" : "492"
+          }, {
+            "item" : "-73.974945",
+            "count" : "490"
+          }, {
+            "item" : "-73.87329",
+            "count" : "479"
+          }, {
+            "item" : "-73.81743",
+            "count" : "478"
+          } ],
+          "smallest" : "-201.3599900",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036730,
+        "name" : "LOCATION",
+        "dataTypeName" : "location",
+        "description" : "Latitude , Longitude pair",
+        "fieldName" : "location",
+        "position" : 7,
+        "renderTypeName" : "location",
+        "tableColumnId" : 19687829,
+        "width" : 143,
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036731,
+        "name" : "ON STREET NAME",
+        "dataTypeName" : "text",
+        "description" : "Street on which the collision occurred",
+        "fieldName" : "on_street_name",
+        "position" : 8,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436659,
+        "width" : 268,
+        "cachedContents" : {
+          "non_null" : "1733193",
+          "largest" : "ZWICKY AVENUE                   ",
+          "null" : "482103",
+          "top" : [ {
+            "item" : "BROADWAY                        ",
+            "count" : "17277"
+          }, {
+            "item" : "ATLANTIC AVENUE                 ",
+            "count" : "15322"
+          }, {
+            "item" : "BELT PARKWAY                    ",
+            "count" : "13543"
+          }, {
+            "item" : "3 AVENUE                        ",
+            "count" : "12476"
+          }, {
+            "item" : "NORTHERN BOULEVARD              ",
+            "count" : "11965"
+          }, {
+            "item" : "LONG ISLAND EXPRESSWAY          ",
+            "count" : "9928"
+          }, {
+            "item" : "BROOKLYN QUEENS EXPRESSWAY      ",
+            "count" : "9743"
+          }, {
+            "item" : "FLATBUSH AVENUE                 ",
+            "count" : "9741"
+          }, {
+            "item" : "LINDEN BOULEVARD                ",
+            "count" : "9587"
+          }, {
+            "item" : "QUEENS BOULEVARD                ",
+            "count" : "9368"
+          }, {
+            "item" : "2 AVENUE                        ",
+            "count" : "9010"
+          }, {
+            "item" : "GRAND CENTRAL PKWY              ",
+            "count" : "8440"
+          }, {
+            "item" : "BRUCKNER BOULEVARD              ",
+            "count" : "8190"
+          }, {
+            "item" : "FDR DRIVE                       ",
+            "count" : "7519"
+          }, {
+            "item" : "5 AVENUE                        ",
+            "count" : "6767"
+          }, {
+            "item" : "JAMAICA AVENUE                  ",
+            "count" : "6746"
+          }, {
+            "item" : "BELT PARKWAY",
+            "count" : "6362"
+          }, {
+            "item" : "MAJOR DEEGAN EXPRESSWAY         ",
+            "count" : "6186"
+          }, {
+            "item" : "CROSS BRONX EXPY                ",
+            "count" : "6051"
+          }, {
+            "item" : "7 AVENUE                        ",
+            "count" : "5975"
+          } ],
+          "smallest" : "                                ",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036733,
+        "name" : "CROSS STREET NAME",
+        "dataTypeName" : "text",
+        "description" : "Nearest cross street to the collision",
+        "fieldName" : "off_street_name",
+        "position" : 9,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436660,
+        "width" : 281,
+        "cachedContents" : {
+          "non_null" : "1368951",
+          "largest" : "ZWICKY AVENUE                   ",
+          "null" : "846345",
+          "top" : [ {
+            "item" : "3 AVENUE                        ",
+            "count" : "9843"
+          }, {
+            "item" : "BROADWAY                        ",
+            "count" : "9685"
+          }, {
+            "item" : "2 AVENUE                        ",
+            "count" : "8421"
+          }, {
+            "item" : "BROADWAY",
+            "count" : "7253"
+          }, {
+            "item" : "3 AVENUE",
+            "count" : "7087"
+          }, {
+            "item" : "5 AVENUE                        ",
+            "count" : "7051"
+          }, {
+            "item" : "7 AVENUE                        ",
+            "count" : "6634"
+          }, {
+            "item" : "8 AVENUE                        ",
+            "count" : "6580"
+          }, {
+            "item" : "1 AVENUE                        ",
+            "count" : "5318"
+          }, {
+            "item" : "2 AVENUE",
+            "count" : "5260"
+          }, {
+            "item" : "PARK AVENUE                     ",
+            "count" : "4847"
+          }, {
+            "item" : "6 AVENUE                        ",
+            "count" : "4353"
+          }, {
+            "item" : "LEXINGTON AVENUE                ",
+            "count" : "4218"
+          }, {
+            "item" : "5 AVENUE",
+            "count" : "3939"
+          }, {
+            "item" : "LINDEN BOULEVARD",
+            "count" : "3671"
+          }, {
+            "item" : "9 AVENUE                        ",
+            "count" : "3621"
+          }, {
+            "item" : "MADISON AVENUE                  ",
+            "count" : "3580"
+          }, {
+            "item" : "7 AVENUE",
+            "count" : "3563"
+          }, {
+            "item" : "1 AVENUE",
+            "count" : "3522"
+          }, {
+            "item" : "PARK AVENUE",
+            "count" : "3469"
+          } ],
+          "smallest" : "                                ",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036735,
+        "name" : "OFF STREET NAME",
+        "dataTypeName" : "text",
+        "description" : "Street address if known",
+        "fieldName" : "cross_street_name",
+        "position" : 10,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436661,
+        "width" : 304,
+        "cachedContents" : {
+          "non_null" : "389729",
+          "largest" : "ZULETTE AVENUE                          ",
+          "null" : "1825567",
+          "top" : [ {
+            "item" : "772       EDGEWATER ROAD                ",
+            "count" : "402"
+          }, {
+            "item" : "110-00    ROCKAWAY BOULEVARD            ",
+            "count" : "261"
+          }, {
+            "item" : "2800      VICTORY BOULEVARD             ",
+            "count" : "236"
+          }, {
+            "item" : "2655      RICHMOND AVENUE               ",
+            "count" : "169"
+          }, {
+            "item" : "2100      BARTOW AVENUE                 ",
+            "count" : "167"
+          }, {
+            "item" : "501       GATEWAY DRIVE                 ",
+            "count" : "164"
+          }, {
+            "item" : "PARKING LOT 110-00 ROCKAWAY BOULEVARD   ",
+            "count" : "150"
+          }, {
+            "item" : "625       ATLANTIC AVENUE               ",
+            "count" : "145"
+          }, {
+            "item" : "450       FLATBUSH AVENUE               ",
+            "count" : "145"
+          }, {
+            "item" : "3 AVENUE                                ",
+            "count" : "142"
+          }, {
+            "item" : "90-15     QUEENS BOULEVARD              ",
+            "count" : "136"
+          }, {
+            "item" : "123-01    ROOSEVELT AVENUE              ",
+            "count" : "128"
+          }, {
+            "item" : "355       FOOD CENTER DRIVE             ",
+            "count" : "125"
+          }, {
+            "item" : "2 AVENUE                                ",
+            "count" : "120"
+          }, {
+            "item" : "2975      RICHMOND AVENUE               ",
+            "count" : "113"
+          }, {
+            "item" : "2795      RICHMOND AVENUE               ",
+            "count" : "113"
+          }, {
+            "item" : "112       RICHMOND HILL ROAD            ",
+            "count" : "113"
+          }, {
+            "item" : "985       RICHMOND AVENUE               ",
+            "count" : "107"
+          }, {
+            "item" : "1400      PELHAM PARKWAY SOUTH          ",
+            "count" : "103"
+          }, {
+            "item" : "270-05    76 AVENUE                     ",
+            "count" : "101"
+          } ],
+          "smallest" : "                                        ",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036737,
+        "name" : "NUMBER OF PERSONS INJURED",
+        "dataTypeName" : "number",
+        "description" : "Number of persons injured",
+        "fieldName" : "number_of_persons_injured",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436662,
+        "width" : 400,
+        "cachedContents" : {
+          "non_null" : "2215278",
+          "largest" : "43",
+          "null" : "18",
+          "top" : [ {
+            "item" : "0",
+            "count" : "1679504"
+          }, {
+            "item" : "1",
+            "count" : "416056"
+          }, {
+            "item" : "2",
+            "count" : "78173"
+          }, {
+            "item" : "3",
+            "count" : "25643"
+          }, {
+            "item" : "4",
+            "count" : "9425"
+          }, {
+            "item" : "5",
+            "count" : "3642"
+          }, {
+            "item" : "6",
+            "count" : "1499"
+          }, {
+            "item" : "7",
+            "count" : "628"
+          }, {
+            "item" : "8",
+            "count" : "280"
+          }, {
+            "item" : "9",
+            "count" : "144"
+          }, {
+            "item" : "10",
+            "count" : "93"
+          }, {
+            "item" : "11",
+            "count" : "55"
+          }, {
+            "item" : "12",
+            "count" : "34"
+          }, {
+            "item" : "13",
+            "count" : "29"
+          }, {
+            "item" : "15",
+            "count" : "17"
+          }, {
+            "item" : "14",
+            "count" : "11"
+          }, {
+            "item" : "16",
+            "count" : "8"
+          }, {
+            "item" : "17",
+            "count" : "8"
+          }, {
+            "item" : "18",
+            "count" : "6"
+          }, {
+            "item" : "20",
+            "count" : "4"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036739,
+        "name" : "NUMBER OF PERSONS KILLED",
+        "dataTypeName" : "number",
+        "description" : "Number of persons killed",
+        "fieldName" : "number_of_persons_killed",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436663,
+        "width" : 388,
+        "cachedContents" : {
+          "non_null" : "2215265",
+          "largest" : "8",
+          "null" : "31",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2211904"
+          }, {
+            "item" : "1",
+            "count" : "3249"
+          }, {
+            "item" : "2",
+            "count" : "90"
+          }, {
+            "item" : "3",
+            "count" : "15"
+          }, {
+            "item" : "4",
+            "count" : "4"
+          }, {
+            "item" : "5",
+            "count" : "2"
+          }, {
+            "item" : "8",
+            "count" : "1"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036740,
+        "name" : "NUMBER OF PEDESTRIANS INJURED",
+        "dataTypeName" : "number",
+        "description" : "Number of pedestrians injured",
+        "fieldName" : "number_of_pedestrians_injured",
+        "position" : 13,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436664,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "27",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2088986"
+          }, {
+            "item" : "1",
+            "count" : "121677"
+          }, {
+            "item" : "2",
+            "count" : "4102"
+          }, {
+            "item" : "3",
+            "count" : "408"
+          }, {
+            "item" : "4",
+            "count" : "69"
+          }, {
+            "item" : "5",
+            "count" : "27"
+          }, {
+            "item" : "6",
+            "count" : "12"
+          }, {
+            "item" : "7",
+            "count" : "7"
+          }, {
+            "item" : "8",
+            "count" : "2"
+          }, {
+            "item" : "9",
+            "count" : "2"
+          }, {
+            "item" : "13",
+            "count" : "1"
+          }, {
+            "item" : "15",
+            "count" : "1"
+          }, {
+            "item" : "19",
+            "count" : "1"
+          }, {
+            "item" : "27",
+            "count" : "1"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036741,
+        "name" : "NUMBER OF PEDESTRIANS KILLED",
+        "dataTypeName" : "number",
+        "description" : "Number of pedestrians killed",
+        "fieldName" : "number_of_pedestrians_killed",
+        "position" : 14,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436665,
+        "width" : 436,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "6",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2213589"
+          }, {
+            "item" : "1",
+            "count" : "1688"
+          }, {
+            "item" : "2",
+            "count" : "16"
+          }, {
+            "item" : "3",
+            "count" : "1"
+          }, {
+            "item" : "4",
+            "count" : "1"
+          }, {
+            "item" : "6",
+            "count" : "1"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036742,
+        "name" : "NUMBER OF CYCLIST INJURED",
+        "dataTypeName" : "number",
+        "description" : "Number of cyclists injured",
+        "fieldName" : "number_of_cyclist_injured",
+        "position" : 15,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436666,
+        "width" : 400,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "4",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2151656"
+          }, {
+            "item" : "1",
+            "count" : "62846"
+          }, {
+            "item" : "2",
+            "count" : "768"
+          }, {
+            "item" : "3",
+            "count" : "25"
+          }, {
+            "item" : "4",
+            "count" : "1"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036743,
+        "name" : "NUMBER OF CYCLIST KILLED",
+        "dataTypeName" : "number",
+        "description" : "Number of cyclists killed",
+        "fieldName" : "number_of_cyclist_killed",
+        "position" : 16,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436667,
+        "width" : 388,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "2",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2215020"
+          }, {
+            "item" : "1",
+            "count" : "275"
+          }, {
+            "item" : "2",
+            "count" : "1"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036744,
+        "name" : "NUMBER OF MOTORIST INJURED",
+        "dataTypeName" : "number",
+        "description" : "Number of vehicle occupants injured",
+        "fieldName" : "number_of_motorist_injured",
+        "position" : 17,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436668,
+        "width" : 412,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "43",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "1875686"
+          }, {
+            "item" : "1",
+            "count" : "228193"
+          }, {
+            "item" : "2",
+            "count" : "71023"
+          }, {
+            "item" : "3",
+            "count" : "24850"
+          }, {
+            "item" : "4",
+            "count" : "9236"
+          }, {
+            "item" : "5",
+            "count" : "3581"
+          }, {
+            "item" : "6",
+            "count" : "1449"
+          }, {
+            "item" : "7",
+            "count" : "600"
+          }, {
+            "item" : "8",
+            "count" : "268"
+          }, {
+            "item" : "9",
+            "count" : "137"
+          }, {
+            "item" : "10",
+            "count" : "91"
+          }, {
+            "item" : "11",
+            "count" : "54"
+          }, {
+            "item" : "12",
+            "count" : "31"
+          }, {
+            "item" : "13",
+            "count" : "29"
+          }, {
+            "item" : "15",
+            "count" : "15"
+          }, {
+            "item" : "14",
+            "count" : "12"
+          }, {
+            "item" : "16",
+            "count" : "8"
+          }, {
+            "item" : "17",
+            "count" : "7"
+          }, {
+            "item" : "18",
+            "count" : "6"
+          }, {
+            "item" : "20",
+            "count" : "4"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036745,
+        "name" : "NUMBER OF MOTORIST KILLED",
+        "dataTypeName" : "number",
+        "description" : "Number of vehicle occupants killed",
+        "fieldName" : "number_of_motorist_killed",
+        "position" : 18,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19436669,
+        "width" : 400,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "5",
+          "null" : "0",
+          "top" : [ {
+            "item" : "0",
+            "count" : "2213974"
+          }, {
+            "item" : "1",
+            "count" : "1235"
+          }, {
+            "item" : "2",
+            "count" : "70"
+          }, {
+            "item" : "3",
+            "count" : "13"
+          }, {
+            "item" : "4",
+            "count" : "2"
+          }, {
+            "item" : "5",
+            "count" : "2"
+          } ],
+          "smallest" : "0",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036746,
+        "name" : "CONTRIBUTING FACTOR VEHICLE 1",
+        "dataTypeName" : "text",
+        "description" : "Factors contributing to the collision for designated vehicle",
+        "fieldName" : "contributing_factor_vehicle_1",
+        "position" : 19,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436670,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "2207490",
+          "largest" : "Windshield Inadequate",
+          "null" : "7806",
+          "top" : [ {
+            "item" : "Unspecified",
+            "count" : "741913"
+          }, {
+            "item" : "Driver Inattention/Distraction",
+            "count" : "449435"
+          }, {
+            "item" : "Failure to Yield Right-of-Way",
+            "count" : "132622"
+          }, {
+            "item" : "Following Too Closely",
+            "count" : "118995"
+          }, {
+            "item" : "Backing Unsafely",
+            "count" : "80902"
+          }, {
+            "item" : "Other Vehicular",
+            "count" : "69161"
+          }, {
+            "item" : "Passing or Lane Usage Improper",
+            "count" : "63535"
+          }, {
+            "item" : "Passing Too Closely",
+            "count" : "56227"
+          }, {
+            "item" : "Turning Improperly",
+            "count" : "54522"
+          }, {
+            "item" : "Fatigued/Drowsy",
+            "count" : "47554"
+          }, {
+            "item" : "Unsafe Lane Changing",
+            "count" : "43680"
+          }, {
+            "item" : "Traffic Control Disregarded",
+            "count" : "40689"
+          }, {
+            "item" : "Driver Inexperience",
+            "count" : "35631"
+          }, {
+            "item" : "Unsafe Speed",
+            "count" : "34071"
+          }, {
+            "item" : "Alcohol Involvement",
+            "count" : "25407"
+          }, {
+            "item" : "Reaction to Uninvolved Vehicle",
+            "count" : "21630"
+          }, {
+            "item" : "Lost Consciousness",
+            "count" : "20805"
+          }, {
+            "item" : "Pavement Slippery",
+            "count" : "20589"
+          }, {
+            "item" : "Prescription Medication",
+            "count" : "15431"
+          }, {
+            "item" : "View Obstructed/Limited",
+            "count" : "15160"
+          } ],
+          "smallest" : "1",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036747,
+        "name" : "CONTRIBUTING FACTOR VEHICLE 2",
+        "dataTypeName" : "text",
+        "description" : "Factors contributing to the collision for designated vehicle",
+        "fieldName" : "contributing_factor_vehicle_2",
+        "position" : 20,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436671,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "1860136",
+          "largest" : "Windshield Inadequate",
+          "null" : "355160",
+          "top" : [ {
+            "item" : "Unspecified",
+            "count" : "1565315"
+          }, {
+            "item" : "Driver Inattention/Distraction",
+            "count" : "100529"
+          }, {
+            "item" : "Other Vehicular",
+            "count" : "34079"
+          }, {
+            "item" : "Following Too Closely",
+            "count" : "20714"
+          }, {
+            "item" : "Failure to Yield Right-of-Way",
+            "count" : "18003"
+          }, {
+            "item" : "Passing or Lane Usage Improper",
+            "count" : "13827"
+          }, {
+            "item" : "Fatigued/Drowsy",
+            "count" : "10845"
+          }, {
+            "item" : "Passing Too Closely",
+            "count" : "9353"
+          }, {
+            "item" : "Turning Improperly",
+            "count" : "9093"
+          }, {
+            "item" : "Backing Unsafely",
+            "count" : "8166"
+          }, {
+            "item" : "Traffic Control Disregarded",
+            "count" : "8041"
+          }, {
+            "item" : "Driver Inexperience",
+            "count" : "7247"
+          }, {
+            "item" : "Unsafe Lane Changing",
+            "count" : "7148"
+          }, {
+            "item" : "Unsafe Speed",
+            "count" : "6228"
+          }, {
+            "item" : "Lost Consciousness",
+            "count" : "5237"
+          }, {
+            "item" : "Pavement Slippery",
+            "count" : "4284"
+          }, {
+            "item" : "Reaction to Uninvolved Vehicle",
+            "count" : "3564"
+          }, {
+            "item" : "View Obstructed/Limited",
+            "count" : "3455"
+          }, {
+            "item" : "Prescription Medication",
+            "count" : "3022"
+          }, {
+            "item" : "Pedestrian/Bicyclist/Other Pedestrian Error/Confusion",
+            "count" : "2831"
+          } ],
+          "smallest" : "1",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036748,
+        "name" : "CONTRIBUTING FACTOR VEHICLE 3",
+        "dataTypeName" : "text",
+        "description" : "Factors contributing to the collision for designated vehicle",
+        "fieldName" : "contributing_factor_vehicle_3",
+        "position" : 21,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436672,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "160276",
+          "largest" : "View Obstructed/Limited",
+          "null" : "2055020",
+          "top" : [ {
+            "item" : "Unspecified",
+            "count" : "149291"
+          }, {
+            "item" : "Other Vehicular",
+            "count" : "3128"
+          }, {
+            "item" : "Following Too Closely",
+            "count" : "2134"
+          }, {
+            "item" : "Driver Inattention/Distraction",
+            "count" : "2123"
+          }, {
+            "item" : "Fatigued/Drowsy",
+            "count" : "855"
+          }, {
+            "item" : "Pavement Slippery",
+            "count" : "420"
+          }, {
+            "item" : "Reaction to Uninvolved Vehicle",
+            "count" : "234"
+          }, {
+            "item" : "Driver Inexperience",
+            "count" : "208"
+          }, {
+            "item" : "Unsafe Speed",
+            "count" : "196"
+          }, {
+            "item" : "Outside Car Distraction",
+            "count" : "176"
+          }, {
+            "item" : "Traffic Control Disregarded",
+            "count" : "164"
+          }, {
+            "item" : "Failure to Yield Right-of-Way",
+            "count" : "151"
+          }, {
+            "item" : "Passing or Lane Usage Improper",
+            "count" : "132"
+          }, {
+            "item" : "Alcohol Involvement",
+            "count" : "118"
+          }, {
+            "item" : "Unsafe Lane Changing",
+            "count" : "97"
+          }, {
+            "item" : "Backing Unsafely",
+            "count" : "93"
+          }, {
+            "item" : "Turning Improperly",
+            "count" : "81"
+          }, {
+            "item" : "Obstruction/Debris",
+            "count" : "73"
+          }, {
+            "item" : "Passing Too Closely",
+            "count" : "62"
+          }, {
+            "item" : "Fell Asleep",
+            "count" : "59"
+          } ],
+          "smallest" : "1",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036749,
+        "name" : "CONTRIBUTING FACTOR VEHICLE 4",
+        "dataTypeName" : "text",
+        "description" : "Factors contributing to the collision for designated vehicle",
+        "fieldName" : "contributing_factor_vehicle_4",
+        "position" : 22,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436673,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "36584",
+          "largest" : "Windshield Inadequate",
+          "null" : "2178712",
+          "top" : [ {
+            "item" : "Unspecified",
+            "count" : "34486"
+          }, {
+            "item" : "Other Vehicular",
+            "count" : "707"
+          }, {
+            "item" : "Following Too Closely",
+            "count" : "427"
+          }, {
+            "item" : "Driver Inattention/Distraction",
+            "count" : "301"
+          }, {
+            "item" : "Fatigued/Drowsy",
+            "count" : "170"
+          }, {
+            "item" : "Pavement Slippery",
+            "count" : "127"
+          }, {
+            "item" : "Reaction to Uninvolved Vehicle",
+            "count" : "46"
+          }, {
+            "item" : "Unsafe Speed",
+            "count" : "37"
+          }, {
+            "item" : "Driver Inexperience",
+            "count" : "32"
+          }, {
+            "item" : "Outside Car Distraction",
+            "count" : "32"
+          }, {
+            "item" : "Traffic Control Disregarded",
+            "count" : "23"
+          }, {
+            "item" : "Obstruction/Debris",
+            "count" : "22"
+          }, {
+            "item" : "Alcohol Involvement",
+            "count" : "21"
+          }, {
+            "item" : "Fell Asleep",
+            "count" : "19"
+          }, {
+            "item" : "Passing or Lane Usage Improper",
+            "count" : "18"
+          }, {
+            "item" : "Failure to Yield Right-of-Way",
+            "count" : "16"
+          }, {
+            "item" : "Unsafe Lane Changing",
+            "count" : "10"
+          }, {
+            "item" : "Backing Unsafely",
+            "count" : "10"
+          }, {
+            "item" : "Other Electronic Device",
+            "count" : "9"
+          }, {
+            "item" : "Aggressive Driving/Road Rage",
+            "count" : "8"
+          } ],
+          "smallest" : "Accelerator Defective",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036750,
+        "name" : "CONTRIBUTING FACTOR VEHICLE 5",
+        "dataTypeName" : "text",
+        "description" : "Factors contributing to the collision for designated vehicle",
+        "fieldName" : "contributing_factor_vehicle_5",
+        "position" : 23,
+        "renderTypeName" : "text",
+        "tableColumnId" : 19436674,
+        "width" : 448,
+        "cachedContents" : {
+          "non_null" : "10020",
+          "largest" : "View Obstructed/Limited",
+          "null" : "2205276",
+          "top" : [ {
+            "item" : "Unspecified",
+            "count" : "9442"
+          }, {
+            "item" : "Other Vehicular",
+            "count" : "207"
+          }, {
+            "item" : "Following Too Closely",
+            "count" : "111"
+          }, {
+            "item" : "Driver Inattention/Distraction",
+            "count" : "68"
+          }, {
+            "item" : "Pavement Slippery",
+            "count" : "54"
+          }, {
+            "item" : "Fatigued/Drowsy",
+            "count" : "41"
+          }, {
+            "item" : "Reaction to Uninvolved Vehicle",
+            "count" : "13"
+          }, {
+            "item" : "Alcohol Involvement",
+            "count" : "11"
+          }, {
+            "item" : "Obstruction/Debris",
+            "count" : "11"
+          }, {
+            "item" : "Driver Inexperience",
+            "count" : "10"
+          }, {
+            "item" : "Unsafe Speed",
+            "count" : "9"
+          }, {
+            "item" : "Outside Car Distraction",
+            "count" : "7"
+          }, {
+            "item" : "Failure to Yield Right-of-Way",
+            "count" : "5"
+          }, {
+            "item" : "Traffic Control Disregarded",
+            "count" : "4"
+          }, {
+            "item" : "Fell Asleep",
+            "count" : "3"
+          }, {
+            "item" : "Aggressive Driving/Road Rage",
+            "count" : "2"
+          }, {
+            "item" : "Drugs (illegal)",
+            "count" : "2"
+          }, {
+            "item" : "Failure to Keep Right",
+            "count" : "2"
+          }, {
+            "item" : "Other Electronic Device",
+            "count" : "2"
+          }, {
+            "item" : "Passing Too Closely",
+            "count" : "2"
+          } ],
+          "smallest" : "Aggressive Driving/Road Rage",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036751,
+        "name" : "COLLISION_ID",
+        "dataTypeName" : "number",
+        "description" : "Unique record code generated by system. Primary Key for Crash table.",
+        "fieldName" : "collision_id",
+        "position" : 24,
+        "renderTypeName" : "number",
+        "tableColumnId" : 19564287,
+        "width" : 100,
+        "cachedContents" : {
+          "non_null" : "2215296",
+          "largest" : "4852165",
+          "null" : "0",
+          "top" : [ {
+            "item" : "4237435",
+            "count" : "1"
+          }, {
+            "item" : "4705403",
+            "count" : "1"
+          }, {
+            "item" : "3361802",
+            "count" : "1"
+          }, {
+            "item" : "3938658",
+            "count" : "1"
+          }, {
+            "item" : "4220124",
+            "count" : "1"
+          }, {
+            "item" : "4386489",
+            "count" : "1"
+          }, {
+            "item" : "2816159",
+            "count" : "1"
+          }, {
+            "item" : "4658374",
+            "count" : "1"
+          }, {
+            "item" : "3152560",
+            "count" : "1"
+          }, {
+            "item" : "4098135",
+            "count" : "1"
+          }, {
+            "item" : "2792260",
+            "count" : "1"
+          }, {
+            "item" : "4631947",
+            "count" : "1"
+          }, {
+            "item" : "3633713",
+            "count" : "1"
+          }, {
+            "item" : "3870846",
+            "count" : "1"
+          }, {
+            "item" : "3911210",
+            "count" : "1"
+          }, {
+            "item" : "3917334",
+            "count" : "1"
+          }, {
+            "item" : "4405415",
+            "count" : "1"
+          }, {
+            "item" : "4030273",
+            "count" : "1"
+          }, {
+            "item" : "3970004",
+            "count" : "1"
+          }, {
+            "item" : "3765424",
+            "count" : "1"
+          } ],
+          "smallest" : "22",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036752,
+        "name" : "VEHICLE TYPE CODE 1",
+        "dataTypeName" : "text",
+        "description" : "Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)",
+        "fieldName" : "vehicle_type_code1",
+        "position" : 25,
+        "renderTypeName" : "text",
+        "tableColumnId" : 21537789,
+        "width" : 145,
+        "cachedContents" : {
+          "non_null" : "2199255",
+          "largest" : "ХР06",
+          "null" : "16041",
+          "top" : [ {
+            "item" : "Sedan",
+            "count" : "639469"
+          }, {
+            "item" : "Station Wagon/Sport Utility Vehicle",
+            "count" : "501058"
+          }, {
+            "item" : "PASSENGER VEHICLE",
+            "count" : "416206"
+          }, {
+            "item" : "SPORT UTILITY / STATION WAGON",
+            "count" : "180291"
+          }, {
+            "item" : "Taxi",
+            "count" : "55693"
+          }, {
+            "item" : "4 dr sedan",
+            "count" : "40187"
+          }, {
+            "item" : "Pick-up Truck",
+            "count" : "38104"
+          }, {
+            "item" : "TAXI",
+            "count" : "31911"
+          }, {
+            "item" : "Box Truck",
+            "count" : "26459"
+          }, {
+            "item" : "VAN",
+            "count" : "25266"
+          }, {
+            "item" : "Bus",
+            "count" : "24180"
+          }, {
+            "item" : "OTHER",
+            "count" : "22968"
+          }, {
+            "item" : "UNKNOWN",
+            "count" : "19940"
+          }, {
+            "item" : "Bike",
+            "count" : "17984"
+          }, {
+            "item" : "LARGE COM VEH(6 OR MORE TIRES)",
+            "count" : "14397"
+          }, {
+            "item" : "BUS",
+            "count" : "13993"
+          }, {
+            "item" : "SMALL COM VEH(4 TIRES) ",
+            "count" : "13216"
+          }, {
+            "item" : "PICK-UP TRUCK",
+            "count" : "11505"
+          }, {
+            "item" : "Tractor Truck Diesel",
+            "count" : "11277"
+          }, {
+            "item" : "LIVERY VEHICLE",
+            "count" : "10481"
+          } ],
+          "smallest" : ".",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036753,
+        "name" : "VEHICLE TYPE CODE 2",
+        "dataTypeName" : "text",
+        "description" : "Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)",
+        "fieldName" : "vehicle_type_code2",
+        "position" : 26,
+        "renderTypeName" : "text",
+        "tableColumnId" : 21537809,
+        "width" : 133,
+        "cachedContents" : {
+          "non_null" : "1771775",
+          "largest" : "yw",
+          "null" : "443521",
+          "top" : [ {
+            "item" : "Sedan",
+            "count" : "439815"
+          }, {
+            "item" : "Station Wagon/Sport Utility Vehicle",
+            "count" : "353947"
+          }, {
+            "item" : "PASSENGER VEHICLE",
+            "count" : "318607"
+          }, {
+            "item" : "SPORT UTILITY / STATION WAGON",
+            "count" : "140204"
+          }, {
+            "item" : "UNKNOWN",
+            "count" : "81544"
+          }, {
+            "item" : "Taxi",
+            "count" : "39132"
+          }, {
+            "item" : "Bike",
+            "count" : "37949"
+          }, {
+            "item" : "Pick-up Truck",
+            "count" : "34038"
+          }, {
+            "item" : "Box Truck",
+            "count" : "31028"
+          }, {
+            "item" : "4 dr sedan",
+            "count" : "30095"
+          }, {
+            "item" : "TAXI",
+            "count" : "27702"
+          }, {
+            "item" : "VAN",
+            "count" : "22769"
+          }, {
+            "item" : "OTHER",
+            "count" : "21692"
+          }, {
+            "item" : "Bus",
+            "count" : "21630"
+          }, {
+            "item" : "BICYCLE",
+            "count" : "18555"
+          }, {
+            "item" : "LARGE COM VEH(6 OR MORE TIRES)",
+            "count" : "13687"
+          }, {
+            "item" : "SMALL COM VEH(4 TIRES) ",
+            "count" : "12962"
+          }, {
+            "item" : "BUS",
+            "count" : "11502"
+          }, {
+            "item" : "Tractor Truck Diesel",
+            "count" : "11189"
+          }, {
+            "item" : "PICK-UP TRUCK",
+            "count" : "10672"
+          } ],
+          "smallest" : "-",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036754,
+        "name" : "VEHICLE TYPE CODE 3",
+        "dataTypeName" : "text",
+        "description" : "Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)",
+        "fieldName" : "vehicle_type_code_3",
+        "position" : 27,
+        "renderTypeName" : "text",
+        "tableColumnId" : 21537886,
+        "width" : 125,
+        "cachedContents" : {
+          "non_null" : "154065",
+          "largest" : "yello",
+          "null" : "2061231",
+          "top" : [ {
+            "item" : "Sedan",
+            "count" : "49811"
+          }, {
+            "item" : "Station Wagon/Sport Utility Vehicle",
+            "count" : "40541"
+          }, {
+            "item" : "PASSENGER VEHICLE",
+            "count" : "27713"
+          }, {
+            "item" : "SPORT UTILITY / STATION WAGON",
+            "count" : "13358"
+          }, {
+            "item" : "UNKNOWN",
+            "count" : "3285"
+          }, {
+            "item" : "Pick-up Truck",
+            "count" : "2661"
+          }, {
+            "item" : "4 dr sedan",
+            "count" : "2564"
+          }, {
+            "item" : "Taxi",
+            "count" : "2374"
+          }, {
+            "item" : "VAN",
+            "count" : "1366"
+          }, {
+            "item" : "OTHER",
+            "count" : "1045"
+          }, {
+            "item" : "Box Truck",
+            "count" : "983"
+          }, {
+            "item" : "TAXI",
+            "count" : "980"
+          }, {
+            "item" : "Bus",
+            "count" : "683"
+          }, {
+            "item" : "PICK-UP TRUCK",
+            "count" : "619"
+          }, {
+            "item" : "Bike",
+            "count" : "530"
+          }, {
+            "item" : "Van",
+            "count" : "453"
+          }, {
+            "item" : "Motorcycle",
+            "count" : "445"
+          }, {
+            "item" : "LARGE COM VEH(6 OR MORE TIRES)",
+            "count" : "441"
+          }, {
+            "item" : "SMALL COM VEH(4 TIRES) ",
+            "count" : "435"
+          }, {
+            "item" : "LIVERY VEHICLE",
+            "count" : "424"
+          } ],
+          "smallest" : "2 dr sedan",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036755,
+        "name" : "VEHICLE TYPE CODE 4",
+        "dataTypeName" : "text",
+        "description" : "Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)",
+        "fieldName" : "vehicle_type_code_4",
+        "position" : 28,
+        "renderTypeName" : "text",
+        "tableColumnId" : 21537900,
+        "width" : 127,
+        "cachedContents" : {
+          "non_null" : "35260",
+          "largest" : "WORK VAN",
+          "null" : "2180036",
+          "top" : [ {
+            "item" : "Sedan",
+            "count" : "12195"
+          }, {
+            "item" : "Station Wagon/Sport Utility Vehicle",
+            "count" : "10178"
+          }, {
+            "item" : "PASSENGER VEHICLE",
+            "count" : "5969"
+          }, {
+            "item" : "SPORT UTILITY / STATION WAGON",
+            "count" : "2852"
+          }, {
+            "item" : "UNKNOWN",
+            "count" : "595"
+          }, {
+            "item" : "4 dr sedan",
+            "count" : "568"
+          }, {
+            "item" : "Pick-up Truck",
+            "count" : "552"
+          }, {
+            "item" : "Taxi",
+            "count" : "484"
+          }, {
+            "item" : "VAN",
+            "count" : "242"
+          }, {
+            "item" : "OTHER",
+            "count" : "189"
+          }, {
+            "item" : "Box Truck",
+            "count" : "154"
+          }, {
+            "item" : "TAXI",
+            "count" : "144"
+          }, {
+            "item" : "PICK-UP TRUCK",
+            "count" : "112"
+          }, {
+            "item" : "Bus",
+            "count" : "109"
+          }, {
+            "item" : "Motorcycle",
+            "count" : "86"
+          }, {
+            "item" : "Van",
+            "count" : "80"
+          }, {
+            "item" : "LARGE COM VEH(6 OR MORE TIRES)",
+            "count" : "58"
+          }, {
+            "item" : "SMALL COM VEH(4 TIRES) ",
+            "count" : "56"
+          }, {
+            "item" : "Convertible",
+            "count" : "55"
+          }, {
+            "item" : "LIVERY VEHICLE",
+            "count" : "54"
+          } ],
+          "smallest" : "2 dr sedan",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 537036756,
+        "name" : "VEHICLE TYPE CODE 5",
+        "dataTypeName" : "text",
+        "description" : "Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)",
+        "fieldName" : "vehicle_type_code_5",
+        "position" : 29,
+        "renderTypeName" : "text",
+        "tableColumnId" : 21537975,
+        "width" : 128,
+        "cachedContents" : {
+          "non_null" : "9705",
+          "largest" : "Wagon",
+          "null" : "2205591",
+          "top" : [ {
+            "item" : "Sedan",
+            "count" : "3503"
+          }, {
+            "item" : "Station Wagon/Sport Utility Vehicle",
+            "count" : "2910"
+          }, {
+            "item" : "PASSENGER VEHICLE",
+            "count" : "1487"
+          }, {
+            "item" : "SPORT UTILITY / STATION WAGON",
+            "count" : "802"
+          }, {
+            "item" : "Pick-up Truck",
+            "count" : "177"
+          }, {
+            "item" : "4 dr sedan",
+            "count" : "123"
+          }, {
+            "item" : "Taxi",
+            "count" : "119"
+          }, {
+            "item" : "UNKNOWN",
+            "count" : "94"
+          }, {
+            "item" : "VAN",
+            "count" : "50"
+          }, {
+            "item" : "OTHER",
+            "count" : "49"
+          }, {
+            "item" : "Box Truck",
+            "count" : "43"
+          }, {
+            "item" : "Van",
+            "count" : "33"
+          }, {
+            "item" : "TAXI",
+            "count" : "31"
+          }, {
+            "item" : "PICK-UP TRUCK",
+            "count" : "31"
+          }, {
+            "item" : "Motorcycle",
+            "count" : "30"
+          }, {
+            "item" : "Bus",
+            "count" : "23"
+          }, {
+            "item" : "Convertible",
+            "count" : "15"
+          }, {
+            "item" : "Bike",
+            "count" : "15"
+          }, {
+            "item" : "Tractor Truck Diesel",
+            "count" : "14"
+          }, {
+            "item" : "2 dr sedan",
+            "count" : "14"
+          } ],
+          "smallest" : "2 dr sedan",
+          "count" : "2215296",
+          "cardinality" : "2215296"
+        },
+        "format" : {
+          "align" : "left"
+        }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "rdfSubject" : "0",
+        "attachments" : [ {
+          "filename" : "MVCollisionsDataDictionary_20190813_ERD.xlsx",
+          "assetId" : "bd7ab0b2-d48c-48c4-a0a5-590d31a3e120",
+          "blobId" : "",
+          "name" : "MVCollisionsDataDictionary_20190813_ERD.xlsx"
+        } ],
+        "custom_fields" : {
+          "Data Collection" : {
+            "Data Collection" : "Motor Vehicle Collisions"
+          },
+          "Update" : {
+            "Automation" : "Yes",
+            "Date Made Public" : "5/7/2014",
+            "Update Frequency" : "Daily"
+          },
+          "Dataset Information" : {
+            "Agency" : "Police Department (NYPD)"
+          }
+        },
+        "rowIdentifier" : 537036751,
+        "rowLabel" : "Motor Vehicle Collision",
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        }
+      },
+      "owner" : {
+        "id" : "5fuc-pqz2",
+        "displayName" : "NYC OpenData",
+        "profileImageUrlLarge" : "/api/users/5fuc-pqz2/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/5fuc-pqz2/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/5fuc-pqz2/profile_images/TINY",
+        "screenName" : "NYC OpenData",
+        "type" : "interactive",
+        "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "5fuc-pqz2",
+        "displayName" : "NYC OpenData",
+        "profileImageUrlLarge" : "/api/users/5fuc-pqz2/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/5fuc-pqz2/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/5fuc-pqz2/profile_images/TINY",
+        "screenName" : "NYC OpenData",
+        "type" : "interactive",
+        "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+      },
+      "tags" : [ "nypd", "collisions", "bigapps", "big apps", "visionzero", "vision", "zero", "nycopendata", "traffic data" ],
+      "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType", "unsaved" ]
+    }
+  },
+  "data" : [ [ "row-rsc3.wgwr-zpi9", "00000000-0000-0000-2EDA-D04CF4F72CCD", 0, 1631659942, null, 1631659946, null, "{ }", "2021-09-11T00:00:00", "2:39", null, null, null, null, null, "WHITESTONE EXPRESSWAY", "20 AVENUE", null, "2", "0", "0", "0", "0", "0", "2", "0", "Aggressive Driving/Road Rage", "Unspecified", null, null, null, "4455765", "Sedan", "Sedan", null, null, null ]
+, [ "row-t9dc~q8a7~jwk4", "00000000-0000-0000-504A-3882B5C655F7", 0, 1648594368, null, 1648594369, null, "{ }", "2022-03-26T00:00:00", "11:45", null, null, null, null, null, "QUEENSBORO BRIDGE UPPER", null, null, "1", "0", "0", "0", "0", "0", "1", "0", "Pavement Slippery", null, null, null, null, "4513547", "Sedan", null, null, null, null ]
+, [ "row-h8ny_qxbv_ezwp", "00000000-0000-0000-FFEC-C2F092D6EF34", 0, 1699314730, null, 1699314738, null, "{ }", "2023-11-01T00:00:00", "1:29", "BROOKLYN", "11230", "40.62179", "-73.970024", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.62179", "-73.970024", null, false ], "OCEAN PARKWAY", "AVENUE K", null, "1", "0", "0", "0", "0", "0", "1", "0", "Unspecified", "Unspecified", "Unspecified", null, null, "4675373", "Moped", "Sedan", "Sedan", null, null ]
+, [ "row-gxrs-hm78-w9gs", "00000000-0000-0000-B0D5-6682910B6F0B", 0, 1656975116, null, 1656975124, null, "{ }", "2022-06-29T00:00:00", "6:55", null, null, null, null, null, "THROGS NECK BRIDGE", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Following Too Closely", "Unspecified", null, null, null, "4541903", "Sedan", "Pick-up Truck", null, null, null ]
+, [ "row-58i4.zk9q.sxqs", "00000000-0000-0000-BFF9-578A0131234A", 0, 1664232725, null, 1664232731, null, "{ }", "2022-09-21T00:00:00", "13:21", null, null, null, null, null, "BROOKLYN BRIDGE", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Passing Too Closely", "Unspecified", null, null, null, "4566131", "Station Wagon/Sport Utility Vehicle", null, null, null, null ]
+, [ "row-8be9.bfa8.qner", "00000000-0000-0000-CAE4-940DA030CD49", 0, 1682981713, null, 1682981719, null, "{ }", "2023-04-26T00:00:00", "13:30", null, null, null, null, null, "WEST 54 STREET", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Unspecified", "Unspecified", null, null, null, "4623759", "Sedan", "Box Truck", null, null, null ]
+, [ "row-ms9b-kmiu~6a4s", "00000000-0000-0000-4B37-8ED15D4E47D6", 0, 1699314730, null, 1699314738, null, "{ }", "2023-11-01T00:00:00", "7:12", null, null, null, null, null, "HUTCHINSON RIVER PARKWAY", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Following Too Closely", "Driver Inattention/Distraction", null, null, null, "4675709", "Sedan", "Station Wagon/Sport Utility Vehicle", null, null, null ]
+, [ "row-8s4d.dfjv.ied8", "00000000-0000-0000-01E9-E90622E8764D", 0, 1699314730, null, 1699314738, null, "{ }", "2023-11-01T00:00:00", "8:01", null, null, null, null, null, "WEST 35 STREET", "HENRY HUDSON RIVER", null, "0", "0", "0", "0", "0", "0", "0", "0", "Failure to Yield Right-of-Way", null, null, null, null, "4675769", "Sedan", null, null, null, null ]
+, [ "row-f5f3_zevy.zj4k", "00000000-0000-0000-B026-DB013F0E7278", 0, 1682981713, null, 1682981719, null, "{ }", "2023-04-26T00:00:00", "22:20", null, null, null, null, null, null, null, "61        Ed Koch queensborough bridge", "0", "0", "0", "0", "0", "0", "0", "0", "Unspecified", null, null, null, null, "4623865", "Sedan", "Pick-up Truck", null, null, null ]
+, [ "row-ih2j-xch6_fenf", "00000000-0000-0000-D650-935317BB1EDD", 0, 1631659942, null, 1631659946, null, "{ }", "2021-09-11T00:00:00", "9:35", "BROOKLYN", "11208", "40.667202", "-73.8665", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.667202", "-73.8665", null, false ], null, null, "1211      LORING AVENUE", "0", "0", "0", "0", "0", "0", "0", "0", "Unspecified", null, null, null, null, "4456314", "Sedan", null, null, null, null ]
+, [ "row-qe7r_he2n~zchc", "00000000-0000-0000-C344-28D447C8ECF4", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "8:13", "BROOKLYN", "11233", "40.683304", "-73.917274", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.683304", "-73.917274", null, false ], "SARATOGA AVENUE", "DECATUR STREET", null, "0", "0", "0", "0", "0", "0", "0", "0", null, null, null, null, null, "4486609", null, null, null, null, null ]
+, [ "row-a6tb-8mxu-75q7", "00000000-0000-0000-1354-889606CB8C06", 0, 1618872822, null, 1618872825, null, "{ }", "2021-04-14T00:00:00", "12:47", null, null, null, null, null, "MAJOR DEEGAN EXPRESSWAY RAMP", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Unspecified", "Unspecified", null, null, null, "4407458", "Dump", "Sedan", null, null, null ]
+, [ "row-y2tx~bzxa.zt69", "00000000-0000-0000-16C4-6ADE5983EB13", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "17:05", null, null, "40.709183", "-73.956825", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.709183", "-73.956825", null, false ], "BROOKLYN QUEENS EXPRESSWAY", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Passing Too Closely", "Unspecified", null, null, null, "4486555", "Sedan", "Tractor Truck Diesel", null, null, null ]
+, [ "row-hpfw.kfmw_56zk", "00000000-0000-0000-CFE7-20C4137EFDE9", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "8:17", "BRONX", "10475", "40.86816", "-73.83148", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.86816", "-73.83148", null, false ], null, null, "344       BAYCHESTER AVENUE", "2", "0", "0", "0", "0", "0", "2", "0", "Unspecified", "Unspecified", null, null, null, "4486660", "Sedan", "Sedan", null, null, null ]
+, [ "row-mf46.qqxh.jwhb", "00000000-0000-0000-A607-7717B78A1A4F", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "21:10", "BROOKLYN", "11207", "40.67172", "-73.8971", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.67172", "-73.8971", null, false ], null, null, "2047      PITKIN AVENUE", "0", "0", "0", "0", "0", "0", "0", "0", "Driver Inexperience", "Unspecified", null, null, null, "4487074", "Sedan", null, null, null, null ]
+, [ "row-ymd4_a5r8-fhnf", "00000000-0000-0000-1269-7F5669ED4FBD", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "14:58", "MANHATTAN", "10017", "40.75144", "-73.97397", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.75144", "-73.97397", null, false ], "3 AVENUE", "EAST 43 STREET", null, "0", "0", "0", "0", "0", "0", "0", "0", "Passing Too Closely", "Unspecified", null, null, null, "4486519", "Sedan", "Station Wagon/Sport Utility Vehicle", null, null, null ]
+, [ "row-r7tn_shg2_bsa5", "00000000-0000-0000-943E-6976AE9255CA", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-13T00:00:00", "0:34", null, null, "40.701275", "-73.88887", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.701275", "-73.88887", null, false ], "MYRTLE AVENUE", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Passing or Lane Usage Improper", "Unspecified", null, null, null, "4486934", "Station Wagon/Sport Utility Vehicle", null, null, null, null ]
+, [ "row-f3c2_qzd4_euqz", "00000000-0000-0000-331C-4B59E92C4C62", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "16:50", "QUEENS", "11413", "40.675884", "-73.75577", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.675884", "-73.75577", null, false ], "SPRINGFIELD BOULEVARD", "EAST GATE PLAZA", null, "0", "0", "0", "0", "0", "0", "0", "0", "Turning Improperly", "Unspecified", null, null, null, "4487127", "Sedan", "Station Wagon/Sport Utility Vehicle", null, null, null ]
+, [ "row-5jiw~y9ke~4cn3", "00000000-0000-0000-1060-FD13CFBF84C4", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "8:30", null, null, null, null, null, "broadway", "west 80 street -west 81 street", null, "0", "0", "0", "0", "0", "0", "0", "0", "Unsafe Lane Changing", "Unspecified", null, null, null, "4486634", "Station Wagon/Sport Utility Vehicle", "Sedan", null, null, null ]
+, [ "row-dz7b.ivni.j85z", "00000000-0000-0000-9E4E-EB4E3A47956A", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "0:59", null, null, "40.59662", "-74.00231", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.59662", "-74.00231", null, false ], "BELT PARKWAY", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Unsafe Speed", null, null, null, null, "4486564", "Sedan", null, null, null, null ]
+, [ "row-mfk9~dhuq.ugi3", "00000000-0000-0000-8DE7-3AF2B15ACB39", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "23:10", "QUEENS", "11434", "40.66684", "-73.78941", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.66684", "-73.78941", null, false ], "NORTH CONDUIT AVENUE", "150 STREET", null, "2", "0", "0", "0", "0", "0", "2", "0", "Reaction to Uninvolved Vehicle", "Unspecified", null, null, null, "4486635", "Sedan", "Sedan", null, null, null ]
+, [ "row-3ee8-gyzt.24nn", "00000000-0000-0000-00C2-94CDCFBDFBA9", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "17:58", "BROOKLYN", "11217", "40.68158", "-73.97463", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.68158", "-73.97463", null, false ], null, null, "480       DEAN STREET", "0", "0", "0", "0", "0", "0", "0", "0", "Passing Too Closely", "Unspecified", null, null, null, "4486604", "Tanker", "Station Wagon/Sport Utility Vehicle", null, null, null ]
+, [ "row-fwrm.ch3w~j2dz", "00000000-0000-0000-BDE6-9C09E0063026", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "20:03", "BROOKLYN", "11226", "40.65068", "-73.95881", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.65068", "-73.95881", null, false ], null, null, "878       FLATBUSH AVENUE", "4", "0", "0", "0", "0", "0", "4", "0", "Steering Failure", null, null, null, null, "4486991", "Sedan", null, null, null, null ]
+, [ "row-jkrs~uhjy_wkb2", "00000000-0000-0000-DE5D-E72EB388FB88", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "1:28", null, null, null, null, null, "MEEKER AVENUE", "LORIMER STREET", null, "3", "0", "0", "0", "0", "0", "3", "0", "Traffic Control Disregarded", "Unspecified", null, null, null, "4486284", "Station Wagon/Sport Utility Vehicle", "Station Wagon/Sport Utility Vehicle", null, null, null ]
+, [ "row-dfdr_cbzy.5t4m", "00000000-0000-0000-0EC7-DD29E2D3CB6E", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-11T00:00:00", "19:43", "BRONX", "10463", "40.87262", "-73.904686", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.87262", "-73.904686", null, false ], "WEST KINGSBRIDGE ROAD", "HEATH AVENUE", null, "1", "0", "0", "0", "0", "0", "1", "0", "Unspecified", "Unspecified", null, null, null, "4487040", "Station Wagon/Sport Utility Vehicle", "Sedan", null, null, null ]
+, [ "row-j8zv_pzdm~9476", "00000000-0000-0000-457F-F7C3A9FEAAEC", 0, 1639785167, null, 1639785172, null, "{ }", "2021-12-14T00:00:00", "14:30", null, null, "40.783268", "-73.82485", [ "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}", "40.783268", "-73.82485", null, false ], "WHITESTONE EXPRESSWAY", null, null, "0", "0", "0", "0", "0", "0", "0", "0", "Following Too Closely", "Unspecified", "Unspecified", null, null, "4486537", "Station Wagon/Sport Utility Vehicle", "Sedan", "Sedan", null, null ]
+]
+}
