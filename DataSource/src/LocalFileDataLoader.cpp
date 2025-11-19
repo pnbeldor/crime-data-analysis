@@ -25,12 +25,41 @@ LocalFileDataLoader::~LocalFileDataLoader()
     }
 }
 
-std::string LocalFileDataLoader::fetchData()
+std::string LocalFileDataLoader::FetchData()
 {
+    std::cout << "Fetching Data string\n";
     std::ostringstream ss; // Create a stringstream
     ss << inputFile.rdbuf(); // Read the entire file buffer into the stringstream
 
+    // std::string line;
+    // std::stringstream sss(ss.str());
+    // for (int i = 0; i < 150; i++)
+    // {
+    //     std::getline(sss, line);
+    //     std::cout << line << "\n\n";
+    // }
+    std::cout << "End fetching data string\n";
     return ss.str();
+}
+
+std::variant<std::string, simdjson::dom::element>  LocalFileDataLoader::FetchData2()
+{
+    std::cout << "Fetching Data 2 Parsing the data\n";
+
+    std::string jsonString = FetchData();
+
+    simdjson::dom::parser parser;
+    simdjson::dom::element doc;
+    simdjson::error_code error = parser.parse(jsonString).get(doc);
+
+    std::cout << "End parsing the data\n";
+    if (!error) {
+        return doc;
+    }
+    std::cerr << error << std::endl;
+
+    return jsonString;
+
 }
 
 bool LocalFileDataLoader::canHandle(const std::string& source) const

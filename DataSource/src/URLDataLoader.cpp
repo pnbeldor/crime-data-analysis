@@ -19,7 +19,7 @@ URLDataLoader::~URLDataLoader()
     // Destructor
 }
 
-std::string URLDataLoader::fetchData()
+std::string URLDataLoader::FetchData()
 {
     return "URL Data fetched";
 }

@@ -76,7 +76,7 @@ std::string AbstractDataFetcher::LoadData()
         loader = std::make_unique<URLDataLoader>();
 
     if (loader != nullptr)
-        fetchedData = loader->fetchData();
+        fetchedData = loader->FetchData();
 
     return fetchedData;
 }

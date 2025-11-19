@@ -9,8 +9,10 @@ Date: 9/26/2025
 #define DATA_SOURCE_LOCAL_FILE_DATA_LOADER_H
 
 #include <fstream>
+#include <variant>
 
 #include "IDataFetcher.h"
+#include "simdjson.h"
 
 class LocalFileDataLoader : public IDataFetcher {
 public:
@@ -18,7 +20,8 @@ public:
     virtual ~LocalFileDataLoader();
 
     //std::string fetch_data(const std::string& path) override;
-    std::string fetchData() override;
+    std::string FetchData() override;
+    std::variant<std::string, simdjson::dom::element> FetchData2();
     bool canHandle(const std::string& source) const override;
     
 

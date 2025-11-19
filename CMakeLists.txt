@@ -15,6 +15,9 @@ include(CTest)
 enable_testing()
 
 configure_file(DataConfig.h.in DataFetchConfig.h)
+set(RESOURCES_DIR "${PROJECT_SOURCE_DIR}/resources")
+
+add_definitions(-DRESOURCES_PATH="${RESOURCES_DIR}")
 
 #include(GnuInstallDirs)
 
@@ -40,6 +43,17 @@ FetchContent_Declare(
     GIT_TAG        curl-8_16_0
 )
 FetchContent_MakeAvailable(curl)
+
+FetchContent_Declare(
+    simdjson
+    GIT_REPOSITORY https://github.com/simdjson/simdjson.git
+    GIT_TAG        v4.2.1
+    GIT_SHALLOW TRUE)
+
+#set(SIMDJSON_JUST_LIBRARY ON CACHE INTERNAL "")
+#set(SIMDJSON_BUILD_SHARED_LIB ON CACHE INTERNAL "")
+
+FetchContent_MakeAvailable(simdjson)
 
 # FetchContent_Declare(
 #     curlcpp

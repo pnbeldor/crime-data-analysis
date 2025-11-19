@@ -32,19 +32,6 @@ Data::Data(const std::string fieldNames, const std::string fieldDatatypes)
     datasetPtr = std::make_unique<std::vector<std::pair<std::string, std::string>>>(fields);
 }
 
-// void Data::SetDatasetPtr(const std::string fieldNames, const std::string fieldDatatypes)
-// {
-//     Utils utils;
-
-//     const auto names = utils.ParseCSVDataLine(fieldNames);
-//     const auto types = utils.ParseCSVDataLine(fieldDatatypes);
-
-//     /* std::vector<std::pair<std::string, std::string>> */ 
-//     auto fields = utils.ZipVectors(names, types);
-
-//     datasetPtr = std::make_unique<std::vector<std::pair<std::string, std::string>>>(fields);
-// }
-
 Data::~Data()
 {
     // Destructor
@@ -214,7 +201,12 @@ void Data::SetCollectionWithCSVData(const std::string& data_str)
 
 void Data::SetCollectionWithJSONData(const std::string& data_str)
 {
+    std::cout <<"Calling setCollection\n";
+
     Json::Value data = ParseJsonData(data_str);
+
+    std::cout <<"Data is parse successfully with Json \n";
+
 
     if (data == Json::nullValue)
     {
@@ -222,6 +214,24 @@ void Data::SetCollectionWithJSONData(const std::string& data_str)
         std::cout << "Data was: " << data_str << "\n\n";
 
         return;
+    }
+/*
+    std::cout <<"Checking if meta is a member\n";
+    if (data.isMember("meta"))
+    {
+        Json::Value  column = data["meta"]["view"]["columns"];
+
+        for (auto& val: column)
+        std::cout << "Name:  " << val["name"] << "  data Type Name: " << val["dataTypeName"] << "\n";
+    }
+*/
+    if (data.isMember("data"))
+    {
+        Json::Value dataVal = data["data"];
+
+        for (int i = 0; i < 10; i++)
+            std::cout << dataVal[i] << "\n\n";
+
     }
 
     this->collection_ptr->type = data.get("type", "").asString();
@@ -237,7 +247,7 @@ void Data::SetCollectionWithJSONData(const std::string& data_str)
         }
     }
 
-    std::vector<std::string> jsonKeys = {"features", "columns", "data"};
+    std::vector<std::string> jsonKeys = {"meta", "features", "columns", "data"};
 
     for (const auto& key : jsonKeys)
     {
@@ -247,6 +257,15 @@ void Data::SetCollectionWithJSONData(const std::string& data_str)
             this->collection_ptr->features = std::make_unique<std::vector<DataFeature>>(setDataFeature(data[key]));
         }
     }
+}
+
+//const simdjson::dom::element Data::ParseJsonData2(const std::string& data_str)
+const simdjson::ondemand::document Data::ParseJsonData2(const std::string& data_str)
+{
+    simdjson::ondemand::parser parser;
+    simdjson::ondemand::document data = parser.iterate(data_str);
+
+    return data;
 }
 
 Json::Value Data::ParseJsonData(const std::string& data_str)
