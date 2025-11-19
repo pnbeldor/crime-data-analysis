@@ -179,7 +179,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     auto numDataRows = doc["data"].get_array().size();
     std::cout << "Size doc[data]  = " << numDataRows << "\n\n";
 
-    int j = 0;
     dataFeatureMap responseMap;
     Utils utils;
 
@@ -191,8 +190,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             {
                 //std::cout << fieldName[s] << " = " << val.at(s)  << "\t";
                 responseMap[fieldName[s]].push_back(utils.ParseElement(val.at(s)));
-
-                j++;
             }
         }
     }
