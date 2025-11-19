@@ -36,14 +36,14 @@ FetchContent_Declare(
     GIT_TAG        1.9.6
 )
 FetchContent_MakeAvailable(jsoncpp)
-
+#[[
 FetchContent_Declare(
     curl
     GIT_REPOSITORY https://github.com/curl/curl.git
     GIT_TAG        curl-8_16_0
 )
 FetchContent_MakeAvailable(curl)
-
+]]
 # FetchContent_Declare(
 #     curlcpp
 #     GIT_REPOSITORY https://github.com/JosephP91/curlcpp.git
